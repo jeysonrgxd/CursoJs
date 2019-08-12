@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		div{
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div id="super-padre">
+	 <div id="padre">padre
+		<div id="hijo1">...hijo1</div>
+		<div id="hijo2">...hijo2
+			<div id="nieto1">......nieto1</div>
+			<div id="nieto2">......nieto2</div>
+		</div>
+		<div id="hijo3">...hijo3
+			<div id="nieto3">......nieto3</div>
+			<div id="nieto4">......nieto4</div>
+		</div>
+		<div id="hijo4">...hijo4</div>
+	 </div>
+	</div>
+	<script>
+		let c = console.log;
+		let divnuevo = document.createElement("div");
+		divnuevo.textContent="nieto_bastardo";
+		divnuevo.id="bastardo1";
+		let hijos =Array.from(document.querySelector("#padre").children);
+		let hijosconhijos = hijos.filter((e)=>e.children.length>0);
+		let nieto1= hijosconhijos[0].children[0];
+		hijosconhijos[0].insertBefore(divnuevo, nieto1)
+	</script>
+</body>
+</html>

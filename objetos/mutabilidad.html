@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		//son asignados por ereferencia no por valor
+		//Si un objeto se iguala a otro, es asignado por referencia, si cambia, hace cambiar al original.
+		let c = console.log;
+		let perro = {
+			nombre:"jeyson",
+			edad:5,
+			sexo:"masculino",
+			patas:4
+		}
+		c(perro);
+		let perro2 = perro;
+		c(perro2);
+		perro2.orejas=2;
+		//este caso ya se agrego a los objetos tanto cono aquien le asignamos como al que le dimos por referencia osea el original
+		c(perro)
+		c(perro2)
+		//creamos un objeto nuevo vacion que sea una copia del objeto que queramos para asi evitar igualar y que no sea mutable encadenado
+		let perro3 = Object.assign({},perro);
+		perro3.rabia="si"
+
+		c(perro3);
+
+	</script>
+</body>
+</html>

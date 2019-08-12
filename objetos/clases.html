@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+
+		}
+		.cont p{
+			font-size: 25px;
+			font-weight: bold;
+			color: peru;
+
+		}
+	</style>
+</head>
+<body>
+	<script>
+		class Usuarios{
+			constructor(name,apellido,edad,sexo){
+			   this.name =name;
+				this.apellido = apellido;
+				this.edad=edad;
+				this.sexo=sexo;
+			}
+			saluda(){
+				return console.log(`Hola mi nombre es: ${this.name}`);
+			}
+			escribir(){
+				return document.write(`
+				<div class="cont">
+					<p>Hola mi nombre es ${this.name}</p>
+				</div>
+				`)
+			}
+		}
+
+		let jeyson = new Usuarios("jeyson","ramos garcia",24,"masculino");
+		console.log(jeyson.saluda())
+		let andy = new Usuarios("anderson","caceres garcia",23,"masculino");
+		console.log(andy.saluda());
+
+
+
+	</script>
+</body>
+</html>

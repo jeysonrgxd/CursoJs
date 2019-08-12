@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body{
+         background-color: #d1d1d1;
+      }
+   </style>
+</head>
+<body>
+   <div class="contenedor">
+
+   </div>
+   <script>
+      // para mejorar el rendimiento de la pagina y la velocidad ya que lo mas
+      // dificil para el navegador es el pintado de elementos
+      //vealo como que document.createDocumentFragment() es un contenedor que almacena
+      //todo lo que se este creando en memoria y depsues de porrasa mete todo el contenido
+      //de acuerdo adone le ordenemos 
+      let c = console.log;
+      let primos = ["jeyson","andersson","estefany","marcos","angelo",
+                   "mariana","steven","fenanda"];
+      let contenedor = document.querySelector(".contenedor");
+      let menu_ul = document.createElement("ul");
+      let menu_item_fragment = document.createDocumentFragment();
+      contenedor.appendChild(menu_ul);
+
+      for(let item of primos){
+         const li = document.createElement("li");
+         li.textContent=item;
+         menu_item_fragment.appendChild(li);
+      }
+         menu_ul.appendChild(menu_item_fragment);
+
+
+      
+      
+   </script>
+</body>
+</html>

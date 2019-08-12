@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<script>
+//array podemos guardar cualquier valo varibales enteras string booleanos undefined otros arrays------------------------------------------------
+		let c = console.log;
+		let arr1 = ["hola","jeyson","como","estas"];
+		c(arr1);
+		let arr2 =["hola", 2, false,undefined,[1,2,3,4,5]];
+		let arr3=arr2[arr2.length-1][2]; 
+		c(arr3)
+
+// desestructuracion de arrays------------------------ --------------
+		let arr4 = ["hola","putos","como","estan"];
+		let [a,b,x,e] = arr4;
+		c(a); c(b); c(x); c(e); 
+
+// agregar o quitar valores de un array------------------------------
+	//alfinal
+	let arr5 = ["hola","stiven","como"];
+	arr5.push("estas");//agregando al ultimo un valor al array
+	c(arr5);
+	arr5.pop()//borrar el ultimo valor del array
+	c(arr5);
+	
+	//alinicio
+	let nuevoarr5_cont=arr5.unshift("como");//agregamos al unicio y retorna la cantidad nueva que hay
+	c(arr5);//devuel el array
+	c(nuevoarr5_cont);//devuelve la cantidad del nuevo array
+
+	let eliminado = arr5.shift();//elimina el valor del array al inicio  retorna el valor eliminado
+	c(arr5);
+	c("la palabra eliminado del array fue: " +eliminado)
+
+//--------------------------------------------------------------------------
+
+//.splice(startIndex,quantity,value1,value2,value3...)
+// Retorna un array con los elementos eliminados. Modifica el array original
+//-) startIndex
+// Indice en el que se insertarán elementos
+// si es negativo cuenta desde el final
+//-) quantity
+// Cantidad de elementos que serán remplazados (0 si ninguno se remplazará)
+//-) value1,value2,value3...
+// Valores que serán añadidos al array
+	arr5.splice(2, 1,"como","estas","todo","bien");
+	c(arr5);
+	arr5.splice(4,1);//si no especificaos los valores podemos borrar una valor del array
+	c(arr5);
+
+	
+// .slice(start [,end])
+// Extrae en un nuevo array los valores desde [start] hasta [end - 1] No modifica el array original
+	let palabras = arr5.slice(2,4)
+	c(palabras);
+
+	</script>
+</body>
+</html>

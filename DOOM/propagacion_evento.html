@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+			display: flex;
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+		}
+		div{
+			padding: 50px 80px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="cont-1" class="div" data-nombre="soy el div1">
+		<div id="cont-2" class="div" data-nombre="soy el div2">
+			<div id="cont-3" class="div" data-nombre="soy el div 3"></div>
+		</div>
+	</div>
+
+	<script>
+		// utilizando el metodo de event.stopPropagation() inpedimos que el evento se propage alos adre e hijo en el dom
+		let divs= document.querySelectorAll(".div");
+		divs.forEach((element)=>{
+			element.addEventListener("click",(e)=>{
+				let nombre = element.dataset.nombre;
+				e.stopPropagation();
+				console.log(`Activastes el evento no propagado en el : ${nombre} y su id es ${element.id}`);
+			})
+		})
+	</script>
+</body>
+</html>

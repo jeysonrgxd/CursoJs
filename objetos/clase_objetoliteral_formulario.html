@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		h2{
+			text-align: center;
+		}
+		div form label{
+			display: block;
+			margin: 10px;
+			font-weight: bold;
+		}
+		div form{
+			text-align: center;
+		}
+	</style>
+
+
+</head>
+<body>
+	<h2>Formulario</h2>
+	<div>
+		<form action="" id="formulario">
+			<label for="">Nombre <input type="text" id="nombre"></label>
+			<label for="">Apellido <input type="text" id="apellido"></label>
+			<label for="">Edad <input type="text" id="edad"></label>
+			<label for="">DNI <input type="text" id="dni"></label>
+			<label for="">Usuario <input type="text" id="usuario"></label>
+			<label for="">password <input type="password" id="password"></label>
+			<label for=""><input type="submit"></label>
+		</form>
+	</div>
+	<script>
+		//primera forma con objeto literal 
+		// let formulario = document.getElementById("formulario");
+		// formulario.addEventListener("submit",event=>{
+		// 	event.preventDefault();
+		// 	let nombre = event.target.nombre.value;
+		// 	let apellido = event.target.apellido.value;
+		// 	let edad = event.target.edad.value;
+		// 	let dni =event.target.dni.value;
+		// 	let idusu =event.target.usuario.value;
+		// 	let password = event.target.password.value;
+
+		// 	let usuario = {
+		// 		nombre,
+		// 		apellido,
+		// 		edad,
+		// 		dni,
+		// 		idusu,
+		// 		password
+		// 	}
+		// 	console.log(usuario);
+		// })
+
+		//segunda forma con clase instanciada
+		class Usuario{
+			constructor(nombre,apellido,edad,dni,idusu,password){
+				this.nombre = nombre;
+				this.apellido = apellido;
+				this.edad = edad;
+				this.dni = dni;
+				this.idusu=idusu;
+				this.password = password
+			}
+		}
+
+		let formulario = document.getElementById("formulario");
+		formulario.addEventListener("submit",event=>{
+			event.preventDefault();
+			let nombre = event.target.nombre.value;
+			let apellido = event.target.apellido.value;
+			let edad = event.target.edad.value;
+			let dni =event.target.dni.value;
+			let idusu =event.target.usuario.value;
+			let password = event.target.password.value;
+
+			let usuario =new Usuario (
+				nombre,
+				apellido,
+				edad,
+				dni,
+				idusu,
+				password
+			)
+			console.log(usuario);
+		})
+	</script>
+</body>
+</html>

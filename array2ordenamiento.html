@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<label for="">Tu nombre: <input type="text" id="nombre" autocomplete="off"></label><br>
+	<button id="boton">Poner al revez</button> <input type="text" id="respuesta">
+	<script>
+//1°------------------------------------------------------------------------
+		//ejercicio
+		let nombre = document.getElementById("nombre");
+		let boton = document.getElementById("boton");
+		let respuesta = document.getElementById("respuesta");
+
+		boton.addEventListener("click",()=>{
+			var nom = nombre.value;
+			var cambio = mensajereves(nom);
+			respuesta.value=cambio;
+		},false);
+
+
+		//ordanimiento de arrays funcion reverse nos devuelve los elementos de una array inversos osea el miso array con elementos inversos
+
+		let con = console.log;
+		let arr1 = "jeyson".split("");//utilizamos split funcion para convertir una cadena en array delimitando con que parametro queremos que separe en este caso un estring vacio para poner todas las letras en un array
+		con(arr1.reverse());
+		// prueba 2----------------
+		// funcion join pra unir elementos de uun array a string de acuerdo al separador que le pasemos
+		let numeros = [1,2,3,4];
+		con(numeros.join(""));
+
+		//prueba3-----------------------
+		//usamos esplit para obtener un array con el string al cual aplicquemos dicha funcion luego reverse para voltearlo y join para unirlo
+		const mensajereves = (valor)=>valor.split("").reverse().join("");
+		con(mensajereves("jeyson"));
+
+//2° --------------------------------------------------------------------
+		let letras = ["peru","venezuela","chile","colombia"];
+		let num = [1,4,100,4];
+		con(letras.sort());
+		con(num.sort((a,b)=>b-a));
+
+	</script>
+</body>
+</html>

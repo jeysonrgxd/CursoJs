@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body{
+         display: flex;
+         align-items: center;
+         height: 100vh;
+         margin: 0;
+         padding: 0;
+         background-color: #d1d1d1;
+      }
+      .contenido{
+         position: relative;
+         width: calc(100%/3);
+         height: 90%;
+         margin:10px;
+         border: 1px solid red;
+      }
+      #empesar{
+         margin: auto;
+         font-weight: 700;
+         width: 300px;
+         padding: 10px;
+         display: block;
+      }
+      .cajita{
+         position: absolute;
+         top:41px;
+         padding: 20px;
+         opacity: 0;
+         background-color: blueviolet;
+         animation: animar 2s 1 linear;
+         animation-fill-mode: forwards
+      }
+      @keyframes animar{
+         0%{
+            opacity: 0;
+            top:41px;
+         }
+         100%{
+            opacity: 1;
+            top:94.3%;
+
+         }
+      }
+   </style>
+</head>
+<body>
+   <div class="contenido">
+      <button id="empesar">Empesar1</button>
+   </div>
+   <div class="contenido">
+      <button id="empesar">Empesar2</button>
+   </div>
+   <div class="contenido">
+      <button id="empesar">Empesar3</button>
+   </div>
+
+   <script>
+      let c = console.log;
+      let contenido = document.querySelectorAll(".contenido");
+
+      contenido.forEach((element,x,arr)=>{
+         let button = element.firstElementChild;
+         button.addEventListener("click",(e)=>{
+            if(element.children.length>1){
+               element.children[1].remove();
+            }
+            let cajita = document.createElement("div");
+            cajita.classList.add("cajita");
+            element.append(cajita);
+         })
+      })
+
+   </script>
+</body>
+</html>

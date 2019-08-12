@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	body{
+		background-color: #ccc;
+	}
+</style>
+<body>
+	<script>
+		c = console.log;
+		//scope ambito de variables
+		{
+			let numero ="0"
+			c(numero);
+		}	
+		//c(numero); esto no se puede ya que el ambito de la variable numero esta afuera
+
+//-------------------------------------------------------------------------------
+		//closures funciones internet para acceeder a varibles externas declaradas en la primera funcion
+		function suma(){
+			let numero =0
+			return function (){
+				numero++
+				c(numero);
+			}
+
+		}
+		suma()();
+		suma()();
+		const incrementar = suma();
+		incrementar();
+		incrementar();
+		incrementar();
+		// c(numero); no se puede por que la variable no esta declarado afuera sino adentro de la funcion
+
+//----------------------------------------- 
+let user = {
+	nombre:'alexis',
+	apellido:'ramos garcia',
+	edad:0,
+	setEdad(){
+		this.edad = prompt("Cual es tu edad");
+	},
+	getEdad(){
+		c(this.edad);
+	}
+}
+user.setEdad();
+user.getEdad();
+c(user.edad);
+	</script>
+</body>
+</html>

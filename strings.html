@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="nombre" placeholder="Nombre">
+	<button id="boton">Transformar a mayuscula</button>
+	<a href="http://pagina.com/documento.pdf" download="A-38.pdf">PDF</a>
+	<a href="../../imagenes_importantes/ldlinux.bss" target="_blank" download="imagengoku.bss" >Click bajar imagen</a>
+	<script>
+	// 	let ciudad = prompt("cual es la capital del peru?").toUpperCase().trim();
+	// 	let mensaje = ciudad === "LIMA" ? "Correcto" : "Te equivocastes la respuesta es lima"
+	// alert(mensaje);
+	let boton = document.getElementById("boton");
+
+	boton.addEventListener("click", function(){
+		let nombre = document.getElementById("nombre");
+		if(nombre.value == ""){
+			alert("Por favor digita tu nombre");
+		}else{
+			nombrenuevo = nombre.value.toUpperCase().trim();
+			nombre.value=nombrenuevo;
+		}
+		
+	},false);
+
+	</script>
+</body>
+</html>

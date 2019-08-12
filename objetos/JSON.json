@@ -1,0 +1,22 @@
+{
+	"nombre":"jeyson",
+	"apellido":"ramos",
+	"edad":24,
+	"sexo":"masculino",
+	"cursos":["pety","arquitectura"],
+	"familia":[
+		{
+			"nombre":"sonia",
+			"parentesco":"madre"
+
+		},
+		{
+			"nombre":"gino",
+			"parentesco":"javier"
+		},
+		{
+			"nombre":"gollito",
+			"parentesco":"tio"
+		}
+	],
+}

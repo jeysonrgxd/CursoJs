@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		class Persona {
+			constructor(name,apellido,edad,sexo){
+				this.nombre =name
+				this.apellido=apellido
+				this.edad=edad
+				this.sexo = sexo
+			}
+			decirnombre= ()=>{
+				console.log(`Hola mi nombre es: ${this.nombre}`);
+			}
+		}
+
+		class Profesor extends Persona{
+			constructor(name,apellido,edad,sexo,profesion){
+				super(name,apellido,edad,sexo)
+				this.profesion = profesion
+
+			}
+			decirnombre=()=>{
+				console.log(`soy ${this.profesion} y me llamo ${this.nombre}`)
+			}
+		}
+	</script>
+</body>
+</html>

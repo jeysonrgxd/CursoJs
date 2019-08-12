@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+			padding:0;
+			margin: 0;
+		}
+		.cont{
+			height: 40px;
+			background-color: rgba(255,0,255,.4);
+		}
+		.parrafo{
+			font-size: 20px;
+			line-height: 40px;
+			font-weight: bold;
+			color: #242424;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+		}
+		.clickmenu{
+			height: 40px;
+			background-color: rgba(0,255,0,.4);
+		}
+		.textomenu{
+			text-align: center;
+			font-weight: bold;
+			line-height: 40px;
+			padding: 0;
+			margin: 0;
+			font-size: 20px;
+			display: block;
+		}
+		.popmenu{
+			background-color: #eee;
+			width: 100px;
+			overflow: hidden;
+			height: 0;
+			border:1px solid black;
+			font-size: 19px;
+			font-weight: bold;
+			text-align: center;
+			position: fixed;
+			animation : aparecer .3s 1 linear;
+			animation-fill-mode: forwards;
+			/*transform: translate(120px,12px);*/
+		}
+		@keyframes aparecer{
+			from{
+					height: 0px
+				}
+			to{
+					height: 30px;
+				}
+		}
+	</style>
+</head>
+<body>
+	<div class="cont">
+		
+	</div>
+
+	<div class="clickmenu">
+		<p class="textomenu">Doble click para generar popmenu personalizado</p>
+	</div>
+
+	<script>
+		let c = console.log;
+		let cont = document.querySelector(".cont");
+
+		//evento para e doble click
+		cont.addEventListener("dblclick",(e)=>{
+			alert("isistes doble clikc");
+			c(e);
+			// e.offsetX="220px"
+		})
+
+		//evento mouseenter y mouseleave
+		cont.addEventListener("mouseenter",(e)=>{
+			let parrafo = document.createElement("p");
+			parrafo.id = "parrafo";
+			parrafo.textContent="Hola soy el parrafo";
+			parrafo.classList.add("parrafo");
+			if(!document.getElementById("parrafo")){
+				//dos formas de seleccionar
+
+				//cont.appendChild(parrafo);
+				e.target.appendChild(parrafo);
+			}
+
+
+		})
+
+		cont.addEventListener("mouseleave",(e)=>{
+			if(document.getElementById("parrafo")){
+				e.target.removeChild(document.getElementById("parrafo"));
+			}
+		})
+
+		//evento contextmenu ejercicio creando un popmenu
+		let cont_menu = document.querySelector(".clickmenu");
+		cont_menu.addEventListener("contextmenu",(e)=>{
+			e.preventDefault();
+			let menucreado = document.getElementById("popmenu");
+			if(menucreado){
+				document.body.removeChild(menucreado);
+				}
+				creardiv(e);
+			
+		})
+		const creardiv = (e)=>{
+			let popmenu = document.createElement("div");
+				popmenu.id = "popmenu";
+				popmenu.classList.add("popmenu");
+				popmenu.textContent="SubMenu";
+				popmenu.style.left = `${e.clientX}px`;
+				popmenu.style.top = `${e.clientY}px`;
+				document.body.appendChild(popmenu);
+		}
+	</script>
+</body>
+</html>

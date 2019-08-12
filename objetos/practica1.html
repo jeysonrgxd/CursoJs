@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		.cont-boton{
+			text-align: center;
+			/*border: 1px solid red;*/
+		}
+		.cont-boton button{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		let c = console.log;
+		const persona = [{
+			nombre:"jeyson",
+			edad:24,
+			sexo:"marculino"
+
+		},{
+			nombre:"andersson",
+			edad:23,
+			sexo:"masculino"
+		},{
+			nombre:"estefani",
+			edad:19,
+			sexo:"femenino"
+		}];
+
+		persona.forEach((element,x,array)=>{
+			c(element);
+		});
+		
+		let animales ={
+			nombre : "neron",
+			dueno: "jeyson",
+			edad: 4,
+			corre: ()=>{
+				c("El perro corre a 100km")
+			}
+		}
+		c(animales.corre());
+	</script>
+
+
+</body>
+</html>

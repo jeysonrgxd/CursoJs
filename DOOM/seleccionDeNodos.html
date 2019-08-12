@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2 id="titulo">EL DOM</h2>
+		<ul class="menu">
+			<li class="menu-item">Document</li>
+			<li class="menu-item">Object</li>
+			<li class="menu-item">Model</li>
+		</ul>
+	</div>
+	<script>
+		//formas de obtener elementos del dom
+		let c =  console.log;
+		c("formas habituales de obtener elementos del doom")
+		let contenedor = document.querySelector(".container");
+		let titulo = document.getElementById("titulo");
+
+		c(contenedor)
+		c(titulo)
+		//la forma del document.querySelectoAll devuelve una coleccion de datos con la cual podemos acceder como accediendo a elementos de un array [i]
+		c("imprimimos la coleccion obtenido por el querySelectorAll  accedemos de forma como si fuera un array")
+		let menu_item = document.querySelectorAll(".menu .menu-item");
+		c(menu_item);
+		c(menu_item[0]);
+		c(menu_item[1]);
+		c(menu_item[2]);
+
+		//tabien podemos buscar elementos con querySelector y querySelectorAll en un elemento ya obtenido
+		let menu = document.querySelector(".menu");
+		 //utlizamos selectores avanzados de css para hacer las busqueda es una opcion
+		 let item1 = menu.querySelector(".menu-item:first-child")
+		 c("imprimimos el primer elemento de una forma distinta")
+		 c(item1)
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+</style>
+</head>
+<body>
+	<script>
+		let numeros =[];
+		let c = console.log;
+		for(let i =0; i<=100;i++){
+			numeros.push(i);
+		}
+		let cuadrados = numeros.map(x=>x*x);//interactua con todos los elementos del array y nos devuelve un array ya transformado de acuerdo alo que le a llamos programador. recive un callback 
+		let pares = numeros.filter(x=>{//esta funcion al contrario filtra y crea un array nuevo con lo que le ayamos especificado en el callback que le pasamos
+			if(x%2==0){
+				return x;
+			}
+		});
+		c(`Array de numeros:
+			${numeros}`)
+		c(`Numeros pares del array de 100 numeros
+			${pares}`);
+		c(`Cuadrados de los 100 numeros del array
+			${cuadrados}`);
+
+		// reduce: reduce todos los elementos a un unico valor
+		let sumadelarray = numeros.reduce((x,a)=>x+a);
+		c(`La suma de todos los elementos del array de numeros es: 
+			${sumadelarray}`)
+
+	</script>
+</body>
+</html>

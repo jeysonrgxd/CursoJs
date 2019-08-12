@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+		body{
+			background-color: #d1d1d1;
+		}			
+		input{
+			padding: .25em;
+		}
+		.pelota{
+			width: 100px;
+			height: 100px;
+			position: relative;
+			/*left: 50%;*/
+			/*transform: translateX(-50%);*/
+			background-image: linear-gradient( red, darkred);
+			border-radius: 50%;
+			position: fixed;
+			
+		}
+	</style>
+</head>
+<body>
+	<h2>Los eventos en el nabegador</h2>
+	<input type="text" id="input">
+	<div class="pelota"></div>
+	<script>
+		let c = console.log;
+		let input =  document.getElementById("input");
+
+		// cuando presionamos sin soltar una tecla keydown
+		input.addEventListener("keydown",(e)=>{
+			c("presion de tecla")
+			c(e.key)
+		})
+		
+		//cuando soltamos el una tecla presionada
+		input.addEventListener("keyup",(e)=>{
+			c("soltando tecla")
+			c(e.code);
+		});
+
+		//cuando presionamos un boton keypress
+		input.addEventListener("keypress",(e)=>{
+			c("presionando una tecla")
+
+			c(e.key)
+		})
+
+		//ejercicio mover pelota
+		let pelota =  document.querySelector(".pelota");
+
+			let x=0,y =0;
+		addEventListener("keyup",(e)=>{
+		//imprimimos codigo ascci para futuras validaciones
+		// c(e.key)
+			let up = ()=>{
+				y--;
+				pelota.style.transform = `translate(${x*10}px,${y*10}px)`;
+				c(`translate(${x*10}px,${y*10}px)`)
+			}
+			let down = ()=>{
+				y++;
+				pelota.style.transform = `translate(${x*10}px,${y*10}px)`;
+				c(`translate(${x*10}px,${y*10}px)`)
+
+			}
+			let rigth = ()=>{
+				x++
+				pelota.style.transform = `translate(${x*10}px,${y*10}px)`;
+				c(`translate(${x*10}px,${y*10}px)`)
+
+			}
+			let left = ()=>{
+				x--
+				pelota.style.transform = `translate(${x*10}px,${y*10}px)`;
+				c(`translate(${x*10}px,${y*10}px)`)
+
+			}
+			switch (e.key) {
+				case "ArrowUp":
+					up();
+					c("arriba")
+					break;
+				case "ArrowDown":
+					down();
+					c("abajo")
+
+					break;
+				case "ArrowRight":
+					rigth();
+					c("derecha")
+
+					break;
+				case "ArrowLeft":
+					left();
+					c("izquieda")
+
+					break;
+				default:
+					break;
+			}
+
+		})
+
+
+	</script>
+</body>
+</html>

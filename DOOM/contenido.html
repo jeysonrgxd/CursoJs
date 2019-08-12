@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<span>El nombre es:</span>
+		<ul>
+			<li>Document</li>
+			<li>Object</li>
+			<li>Model</li>
+		</ul>
+	</div>
+	<script>
+		let c =  console.log;
+		c("Obteniendo texto con textContent")
+
+		let ul = document.querySelector(".container ul");
+		c(ul);
+		let li = ul.querySelectorAll("li");
+		c(li);
+		for(let text of li){
+			c(text.textContent);
+		}
+		//agregamos html con innerHTML
+		let span = document.querySelector(".container span");
+		let resultado = span.innerHTML+"<strong>RAMOS GARCIA JEYSON GINO</strong>"
+		span.innerHTML=resultado;
+
+		//imprimiedo elelemento
+		c(span.innerOut)
+
+	</script>
+</body>
+</html>

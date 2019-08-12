@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<div class="padre">
+		<div class="normal">
+			<h2 id="titulo">programo por que me gusta</h2>
+		</div>
+	</div>
+	
+	
+	<button class="boton">Hola jeyson</button>
+
+	<script>
+		//cuando se requiere una funcion con parametro en el la funcion que te pide el evento es mejor utilizar una funcion anonima
+
+		//e.target te devuelve el elemento que activo el evento
+		//e.path nos devuelve un array genealogico del quien activo el evento
+		let c = console.log;
+		let hola = e => alert(e.target.textContent);
+		let titulo =  document.getElementById("titulo");
+		titulo.addEventListener("click",e=>{
+			//imprimimos para ver
+			hola(e);
+			//probamos el path y acedemos asu primer padre en arbol de array genealogico
+			e.path[1].style.backgroundColor="red"
+			c(e.path)
+		})
+		document.querySelector(".boton").addEventListener("click",e=>{
+			hola(e);
+		})
+
+	</script>
+</body>
+</html>

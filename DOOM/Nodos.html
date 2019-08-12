@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<p id="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis officia, placeat, quia quos eum dicta magni maiores veritatis! At qui quibusdam enim nulla id laudantium a, cum, totam animi rerum.</p>
+	<div class="contenedor">
+		<img src="https://dw9to29mmj727.cloudfront.net/misc/newsletter-naruto3.png" alt="dfdsfdsfds">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit reiciendis aliquam consectetur provident, necessitatibus libero rerum eaque et in maxime doloribus nihil ad cumque dolores sapiente eligendi non ut. Nostrum!</p>
+	</div>
+	<script>
+		//nodeType nos devuelve el tipo de elemento: 
+		//devueve 1 si es elemento
+		// devuelve 2 si es atributo 
+		//devuelve 3 si es texto y 
+		//devuelve 8 si es comentario
+
+		//nodeName el nombre de la etiqueta con mayuscula
+		let c = console.log;
+		let contenedor = document.querySelector(".contenedor");
+		let naruto = document.querySelector(".contenedor img");
+		c(naruto.nodeName);
+		c(naruto.nodeType);
+
+		//childNodes nos devuelve una ccoleccion de elementos que contenga el contendor al cual le estamos aplicando la funcion
+		c(contenedor.childNodes);
+		c(contenedor.childNodes[3].childNodes[0]);//accedemos al parrafo y le obtenemos su texto
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		.animar{
+			animation: item 1.5s infinite linear;
+		}
+		.color{
+			color: red;
+		}
+		.negrita{
+			font-weight: bold;
+		}
+		@keyframes item{
+			0%{
+				transform: translateX(0px);
+			}
+			50%{
+				transform: translateX(100px);
+				
+			}
+			100%{
+				transform: translateX(0px);
+
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="cotenido">
+		<h2>Colecciones de Nodos</h2>
+		<ul class="menu">
+			<li class="menu-item" id="item1" data-text="">Documen</li>
+			<li class="menu-item" id="item2" data-text="">Object</li>
+			<li class="menu-item" id="item3" data-text="">Model</li>
+		</ul>
+		<button id="boton">Mover</button>
+		<button id="boton3">Agregar color</button>
+		<button id="boton2">Borrar color</button>
+
+	</div>
+
+	<script>
+		let c  =  console.log;
+		//obtenemos los atributo de los elementos con getAttribute("propiedad del elemento")
+		//setAttribute para modificar las propiedades de los elmentos de la etiqueta
+		let item = document.querySelectorAll(".menu-item");
+		for(let e of item){
+			let id = e.getAttribute("id")
+			c(id)
+			e.setAttribute("data-text",id);
+		}
+		//asignamos clases a los elemetos por medio de class list
+
+		//classList.toggle("clase") ase que cada vez que yamemos a esta funcion se active o desactive
+		let boton =  document.getElementById("boton");
+		boton.onclick=()=>{
+			let arrayitem = Array.from(item);
+			arrayitem.map(el => el.classList.toggle("animar"));
+		}
+
+		//remover la clase del elemento y quitando tambien quitar estylo
+		let boton2 =  document.getElementById("boton2");
+		boton2.addEventListener("click",()=>{
+			for(let s of item){
+				s.classList.remove("color");
+			}
+		});
+		//agregar clase al alemento se puede enviar bastante separandolos po coma
+		
+		let boton3 = document.getElementById("boton3");
+		boton3.addEventListener("click",()=>{
+			item.forEach((element,x,array)=>{
+				element.classList.add("color","negrita");
+			})
+		});
+	</script>
+</body>
+</html>

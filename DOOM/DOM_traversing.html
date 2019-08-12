@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<div id="super-padre">
+	 <div id="padre">padre
+	 	<p>parrafo</p>
+		<div id="hijo1">hijo1</div>
+		ftgfg
+		<div id="hijo2">hijo2
+			<div id="nieto1">nieto1</div>
+			<div id="nieto2">nieto2</div>
+		</div>
+		<div id="hijo3">hijo3
+			<div id="nieto3">nieto3</div>
+			<div id="nieto4">nieto4</div>
+		</div>
+		<div id="hijo4">hijo4</div>
+	 </div>
+	</div>
+
+	<script>
+		const c = console.log;
+		let hijo1 = document.getElementById("hijo1");
+		let padre = document.getElementById("padre");
+		//propiedad que nos devuelve el padre del elemento o nodo en este caso
+		c(hijo1.parentNode)
+		c(hijo1.parentElement.parentElement)
+
+		// ----
+
+		c(hijo1.nextSibling);
+		c(hijo1.nextElementSibling)
+
+		c(hijo1.previousSibling)
+		c(hijo1.previousElementSibling)
+
+		// -----
+		c(padre.childNodes)
+		let arrayele = Array.from(padre.children)
+		c(arrayele.filter(e=>e.id=="hijo2")[0]);
+
+		// ---
+		c(padre.firstChild)
+		c(padre.firstElementChild)
+
+		// ----
+		c(padre.lastChild);
+		(padre.lastElementChild)
+
+		// ----
+		c(padre.hasChildNodes())
+
+
+
+
+
+	</script>
+</body>
+</html>

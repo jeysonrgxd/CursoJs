@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//funcion anonima
+		var funcion = function(a,b){
+			return a+b;
+		}
+		console.log(funcion(3,4));
+
+		//funcion devolviendo un objeto
+		//y si me devuelve un objeto entonses puedo acceder asus propiedades
+		function objeto(name,edad){
+			return{
+				a:"hola "+name,
+				b: "tu edad es: "+edad
+			}
+		}
+		let objetos = objeto("jeyson",23);
+		console.log(objetos.a);
+		console.log(objetos.b);
+	</script>
+</body>
+</html>

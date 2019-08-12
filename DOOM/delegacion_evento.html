@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			position: relative;
+			background-color: #d1d1d1;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-family: sans-serif;
+
+		}
+		.modal{
+			display: none;
+			position: absolute;
+			top: 0;
+			width:100%;
+			height: 100%;
+			transition: opacity .4s linear;
+			background-color: rgba(0,0,0,.7);
+			animation: opace .3s 1 linear;
+		}
+		@keyframes opace{
+			from{
+					transform: scale(0);
+				}
+
+				to{
+					transform: scale(1);
+					
+				}
+		}
+		.galeria{
+			display: flex;
+			width: 920px;
+			flex-wrap: wrap;
+
+		}
+		.galeria img{
+			width: 300px;
+			margin: 3px;
+			height: 205px;
+			cursor: pointer;
+		}
+	
+	</style>
+</head>
+<body>
+	<div class="modal">
+		<img src="" alt="" id="imagen-modal">
+	</div>
+	<h2>Luffy snake-man</h2>
+	<button class="agregar">Agregar tankman</button>
+	<div class="galeria">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+		<img src="https://columnacero.com/docs/biblioteca/noticias_24577.jpg" alt="">
+	</div>
+
+	<script>
+		let galeria = document.querySelector(".galeria");
+		galeria.addEventListener("click",(e)=>{
+			if(e.target.nodeName == "IMG"){
+				let imagenes=Array.from(galeria.querySelectorAll("img")),
+					 posicion = imagenes.indexOf(e.target);
+					 console.log(`La imagen ${posicion+1} a sido seleccionada`)
+
+				let modal =  document.querySelector(".modal");
+				let imgnuevo = document.getElementById("imagen-modal");
+				imgnuevo.setAttribute("src",e.target.src);
+				modal.style.display = "flex";
+				modal.style.justifyContent = 'center';
+				modal.style.alignItems = 'center'
+			} 
+
+
+		})
+		let botonAgregar = document.querySelector(".agregar");
+		botonAgregar.addEventListener("click",(e)=>{
+			let nuevaImg = document.createElement("img");
+			nuevaImg.setAttribute("src","https://pm1.narvii.com/6312/e3bab56d5729c78afafcddd767b27121b5255e0c_hq.jpg")
+			galeria.prepend(nuevaImg);
+		})
+	</script>	
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body{
+         background-color: #d1d1d1;
+      }
+   
+   </style>
+</head>
+<body>
+   <button id="boton">Google</button>
+   <button id="boton2">Cerrar google</button>
+
+   <script>
+      /*
+      .-)Objetos:
+         -console
+         -navigator
+         -history
+      */
+     console.log(window.console);
+     console.log(window.navigator);
+     console.log(window.history);   
+
+      // mensaje de confirmacion no devuelve un booleano si aceptamos o false si rechasamos
+      let confir =  window.confirm("estas seguro de hacer esto");
+      let valor = confir ? "Si desea cerrarlo" : "No desea cerrarlo";
+      window.alert(valor);
+
+      // mensaje de respuesta para poder hacer lo que queramos con la respuestas que dimos al navegador
+      let anios =  window.prompt("Cuantos años tienes");
+      window.alert(`tu edad es de: ${anios}`)
+
+      // window.open y window .close
+      let boton = document.getElementById("boton");
+       let google;
+      boton.addEventListener("click",(e)=>{
+        google= window.open("https://www.google.com.pe","google","width=500px,height=200px");
+      })
+      let boton2 = document.getElementById("boton2");
+      boton2.addEventListener("click",(e)=>{
+         google.close();
+      })
+
+
+   </script>
+</body>
+</html>

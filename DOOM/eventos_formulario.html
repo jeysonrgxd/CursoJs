@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		form input{
+			display: block;
+			margin: 10px 0;
+			font-size: 20px;
+		}
+		form input[type="checkbox"]{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+
+		}
+		/*propiedad checked*/
+		form input[type="checkbox"]:checked + span{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<h2>Eventos del formulario</h2>
+	<form action="#" id="formulario">
+		<input type="text" placeholder="Nombre">
+		<input type="text" placeholder="Edad">
+		<input type="text" placeholder="Sexo">
+		<input type="checkbox" id="marcar"><span>Guardar</span>
+		<input type="submit">
+	</form>
+	<script>
+		let formu = document.getElementById("formulario");
+		formu.addEventListener("submit",(e)=>{
+			// podemos inspeccionar mas sobre el target
+			console.log(e.target[0]);
+		})
+		let checkbox = document.getElementById("marcar");
+		checkbox.addEventListener("change",(e)=>{
+			console.log(e.target.checked);
+		})
+	</script>
+</body>
+</html>

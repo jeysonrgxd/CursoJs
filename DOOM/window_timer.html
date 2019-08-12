@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body {
+         margin: 0;
+         padding: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column-reverse;
+         width: 100vw;
+         height: 100vh;
+         font-family: sans-serif;
+         background-color: #d1d1d1;
+      }
+   </style>
+</head>
+
+<body>
+
+   <h2 id="cont"></h2>
+   <button id="boton">Detener</button>
+
+   <script>
+      let c = console.log;
+      let boton = document.getElementById("boton");
+      let cont = document.getElementById("cont");
+      let tiempo = new Date();
+      c(tiempo.toString());
+      c(tiempo.toDateString());
+      c(tiempo.toTimeString());
+      c("\n", tiempo.toLocaleString())
+      c(tiempo.toLocaleDateString());
+      c(tiempo.toLocaleTimeString());
+
+      boton.addEventListener("click", () => {
+         clearInterval(bucle);
+      })
+      //le asign a la variable ula funcion intervbal para ya que una ves declarada ala ves es invocada lo cual hacer que ejecute las intrucciones en su interior, tambien para poder detenerla con la funcion 
+      //clearInterval(<variable que tiene la funcion setInterval>)
+      let bucle = setInterval(() => {
+         let tiempo2 = new Date().toLocaleTimeString();
+         cont.textContent = tiempo2;
+      });
+
+
+      // bucle();
+
+
+   </script>
+</body>
+
+</html>

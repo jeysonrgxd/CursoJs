@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	body{
+		background-color: #d1d1d1;
+	}
+</style>
+<body>
+	
+<script>
+	//ejercicio 1
+	// const nombre = (nombre,sexo)=>{
+	// 	let saludo = sexo.toUpperCase()=="M"?"Bienvenido":"Bienvenida";
+	// 	return `Hola ${nombre}, ${saludo} a mi hogar`;
+		
+	// } 
+	// console.log(nombre("jeyson","m"));
+	// console.log(nombre("stefany","f"));
+
+	//ejercicio2 "parametros rest" 
+	//espeifica la cantidad de parametros que queramos poner
+	const imprimir = (...sumar)=>{
+		console.log(sumar);
+		for (let i = 0; i<sumar.length; i++){
+			console.log(sumar[i]);
+		}
+
+	}
+console.log(imprimir(1,2,3,4,5,6));
+
+</script>
+</body>
+</html>

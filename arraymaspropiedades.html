@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		//la funcion join(argumento) convierte un array con elementos a un string
+		let nomarray = [1,2,3,4,5];
+		let nomstring = nomarray.join("e");
+		console.log(nomstring);
+
+		// concat une dos array en otro array sin modificar el array al cual le aplicamos concat
+		let paises1 = ["peru","bolivia","panama","argenina"];
+		let paises2 = ["venezuela","brazil","colombia","ecuador"];
+		let paisescon = paises1.concat(paises2);
+		console.log(paisescon);
+
+		// encontrar la pocicion de un elementos de un array
+		let peru =paisescon[paisescon.indexOf("peru")];
+		console.log(peru);
+
+		//find(callback) funcion retorna
+		let valor =paisescon.find((pais)=>pais=="brazil");
+		let posicion =paisescon.findIndex((pais)=>pais=="brazil");
+
+		console.log(valor);
+		console.log(posicion);
+
+
+	</script>
+</body>
+</html> 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	</style>
+</head>
+<body>
+	<div>
+		<h1 id="titulo"></h1>
+		<script>
+			nombre_completo = "jeyson gino ramos garcia";
+			titulo= document.getElementById("titulo");
+			titulo.innerHTML=nombre_completo;
+
+			//obtener la primera pocicion de una letra en un texto
+			document.write("<p style='color:orange'>Pocicion primera de la letra a: "+nombre_completo.indexOf('a')+"</p>");
+
+			//obtener a ultima pocicion de una letra e un texto
+			document.write("<p style='color:red'>Pocicion ultima de la letra a: "+nombre_completo.lastIndexOf('a')+"</p>");
+
+			//obtener verdadero o falso si un texto esta contenido en un string
+			document.write("<p style='color:blue'>Se enccuentra el apellido ramos? "+nombre_completo.includes("ramos")+"</p>")
+
+			//obtener verdadero o falso si cierto valor comienza primero en el string
+			document.write("<p style='color:brown'>Se enccuentra el nombre jeyson primero? "+nombre_completo.startsWith("jeyson")+"</p>")
+
+			//obtener verdadero o falso si cierto valor es ultimo en el string
+			document.write("<p style='color:green'>Se encuentra el apellido garcia ultimo? "+nombre_completo.endsWith("garcia")+"</p>")
+
+		</script>
+	</div>
+</body>
+</html>

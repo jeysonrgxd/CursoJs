@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: sans-serif;
+
+		}
+		.cont{
+			padding: 10px;
+			border: 2px solid #aaa;
+		}
+		.cont video{
+			display: block;
+			margin: 0;
+			padding: 0;
+		}
+		.cont .botones{
+			margin: 0;
+			/*padding:10px 0;*/
+			display: flex;
+			justify-content: center;
+			background-color: rgba(0,0,0,.7);
+		}
+		.cont .botones button{
+			margin: 5px;
+			padding: 5px 10px;
+			border: none;
+			border-radius: 10px;
+			outline: none;
+			cursor: pointer;
+
+		}
+
+	</style>
+	<script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+</head>	
+
+<body>
+<!--
+
+				todo acerca de aprender mas de manejo de video con javascript
+				https://www.w3schools.com/tags/ref_av_dom.asp
+
+
+-->
+	<h2>Javascript Evento Multimedia</h2>
+		<div class="cont">
+			<video src="recursos/video/sintel-short.mp4" id="media" buffered=""></video>
+			<div class="botones">
+				<button id="play" title="play"><i class="fas fa-play"></i></button>
+				<button id="pause" title="pause"><i class="fas fa-pause"></i></button>
+				<button id="fullscreen" style="font-size: 18px;" title="pantalla completa"><i class="fas fa-expand">
+				</i></button>
+				<button id="sonido"><i class="fas fa-volume-up" id="audio-icono"></i></button>
+
+			</div>
+		</div>
+
+		<script>
+			let media = document.getElementById("media");
+			let play = document.getElementById("play");
+			let pause  = document.getElementById("pause");
+			let fullscreen = document.getElementById("fullscreen");
+			let sonido= document.getElementById("sonido");
+
+			//metodos de elemento video de html play()iniciar video
+			//pause() detener video
+			// buffered.start(0) que nos devuelve el inicio del video
+			//buffered.end(0) que nos devuelve el numero en segundo en el que termina el video en este caso si el navegador ya cargo todo el video o si se esta cargando todavia ese valor es el que devuelve
+			play.addEventListener("click",(e)=>{
+				media.play();
+				console.log(`Inicio: ${media.buffered.start(0)}, fin ${media.buffered.end(0)}`);
+			})
+
+
+			pause.addEventListener("click",(e)=>{
+				media.pause();
+
+			})
+
+			//metodo de video para tomar todo la pantalla el monitor para ver el video mejor
+			fullscreen.addEventListener("click",(e)=>{
+				media.requestFullscreen();
+			})
+
+			//poodemos acceder asus propiedades una de ellas es video.muted = true por que nos devuelve un booleano
+			//con un ejercicio de cambio de icono con font awesome
+			let bolsonido = false;
+			sonido.addEventListener("click",(e)=>{
+				let icono = document.getElementById("audio-icono");
+				if(!bolsonido){
+					icono.classList.remove("fa-volume-up");
+					media.muted=true;
+					icono.classList.add("fa-volume-mute");
+					bolsonido=true;
+
+				}else{
+					icono.classList.remove("fa-volume-mute");
+					media.muted=false;
+					icono.classList.add("fa-volume-up");
+					bolsonido=false;
+				}
+
+			})
+
+			//"INVESTIGAR DE LA PROPIEDAD currentTime QUE NOS DEVUELVE EN NUMEROS EL TRANSCURSO DE LOS VIDEOS"
+
+			/*
+				todo acerca de aprender mas e video
+				https://www.w3schools.com/tags/ref_av_dom.asp
+
+			*/
+
+		</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<style>
+label{
+   display: block;
+   margin: .5rem;
+}
+</style>
+<body>
+   <h1>Responsive tester</h1>
+   <form action="#" id="form">
+      <label for="">
+         Introduce la URL
+         <input type="text" id="url">
+      </label>
+      <label for="">
+         Introduce el ancho
+         <input type="text" id="ancho">
+      </label>
+      <label for="">
+         Introduce el alto
+         <input type="text" id="alto">
+      </label>
+      <button>Testear</button>
+   </form>
+
+   <script>
+      let form =document.getElementById("form");
+      if(form){
+         form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            let url = document.getElementById("url"),
+                width =document.getElementById("ancho"),
+                height = document.getElementById("alto");
+            
+            if(url && width && height){
+               url = url.value;
+               width = width.value;
+               height = height.value;
+
+               window.open(url,url,`innerWidth=${width},innerHeight=${height}`);
+            }
+         })
+      }
+   </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<div class="cotenido">
+		<h2>Colecciones de Nodos</h2>
+		<ul class="menu">
+			<li class="menu-item">Documen</li>
+			<li class="menu-item">Object</li>
+			<li class="menu-item">Model</li>
+		</ul>
+	</div>
+	<script>
+		c = console.log;
+		c("Tagname ya no se usa y devuelve una lista de elementos diferente a un queryselecor que devuelve un nodeList")
+		let itemTag = document.getElementsByTagName("li");
+		c(itemTag);
+
+		c("queryselector y utulizamos recorrido de nodos convirtiendolo en array")
+		//utilizamos query selector all para seleccionar varios y no queryselector por que solo nos selecciona uno
+		let itemQ = document.querySelectorAll(".menu-item");
+		let itemArray = Array.from(itemQ);
+		c(itemQ)
+		itemArray.map(el=>el.style.color="red");
+			c("imprimimos los texto dde cada elemento")
+		for(let el of itemArray){
+			c(el.textContent);
+			if(el.textContent.trim().toUpperCase()=="MODEL"){
+				c(`se borro el elemento ${el.nodeName} : ${el.textContent}`);
+				el.remove();
+			}
+		}
+
+	</script>
+</body>
+</html> 

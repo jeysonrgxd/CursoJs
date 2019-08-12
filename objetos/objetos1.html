@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		let perro = {
+			nombre:"neron",
+			edad:10,
+			familia:"garcia",
+			correr(nombre) {
+				console.log(`Mi perro ${nombre} corre a 50km por hora`)
+			},
+			correr2:()=>{
+				console.log(`Mi perro ${this.nombre} corre de otra forma`)
+			},
+			quiere: ["jeyson","adersson","estefani"]
+
+		}
+
+		let a = "hola";
+		let b= "munmdo";
+		let saludo ={
+			 [a+b]:" como estas",
+			fine:"y voz"
+
+		}
+		let saludo2 = {a,b};
+
+		let jeyson = {
+			nombre:"jeyson gino ramos garcia",
+			edad:24,
+			sexo:"masculino",
+			"ho-bi":"ClashRoyale"
+		}
+		// se llama de la siguiente mane console.log(jeyson["ho-bi"])
+
+	</script>
+</body>
+</html>

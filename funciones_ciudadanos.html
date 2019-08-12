@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+	<body>
+		<script>
+			//funciones almacenadas en variables o constantes sin los parentesis ya que si le damos parentesis con un valo ya no seria una funcion sino el valor de la ejecucion de la funcion que seria un string o number o etc.
+			const c = console.log;
+			const a = alert;
+			const p = prompt;
+			// c("hola como estas");
+			// a("hola jeyson");
+			// var mensaje = p("dime algo")
+
+			//funciones pasados como argumentos callbak
+			const resta = (a,b)=>a-b;
+			const sumar = (x,y)=>x+y;
+
+			// c(resta(sumar(3,5),3));
+
+			//funciones pueden ser retornadas por otra funciones
+			// function suma(x,y){
+			// 	return function (y){
+			// 		return x+y;
+			// 	}
+			// }
+			// c(suma(5)(4));
+
+			//ejercicio con funciones retornadas
+			const haceralgo = (x)=>(y)=>x*y;
+			let d = haceralgo(3)(4);//12
+			let b = haceralgo(5);//(y)=>x*y
+			c(haceralgo(d)(b(3)));//180
+
+
+
+		</script>
+	</body>
+	</html>	

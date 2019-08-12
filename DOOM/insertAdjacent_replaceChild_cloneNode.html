@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;			
+			padding: 0;	
+			background-color: #C7C7C7;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			height: 100vh;
+			justify-content: center;
+		}
+		.contenedor{
+			text-align: center;
+			border: 1px solid red;
+			width: 700px;
+			padding: 50px;
+		}
+		.parrafo{
+			color: blue;
+			font-weight: bold;
+		}
+		.titulo-color{
+			color: darkorchid;
+		}
+	</style>
+</head>
+<body>
+	<div class="contenedor">
+		Hola jeyson 
+	</div>
+
+	<script>	
+		let cont = document.querySelector(".contenedor");
+		let parrafo = document.createElement("p");
+
+		parrafo.id = "parrafo";
+		parrafo.classList.add("parrafo");
+		parrafo.textContent="Soy el nuevo ingresado";
+
+		let parrafo2 = parrafo.cloneNode(true);
+		let parrado3 = parrafo.cloneNode(true);
+		let parrafo4 = parrafo.cloneNode(true);
+		let parrafo5 = parrafo.cloneNode(true);
+		parrafo5.textContent="soy el que boto al que esta en mi posicion"
+
+
+		cont.insertAdjacentElement("beforeend",parrafo);//ultimo hijo
+		cont.insertAdjacentElement("afterbegin",parrafo2);//primer hijo
+		cont.insertAdjacentElement("beforebegin",parrado3);//hermano anterio
+		cont.insertAdjacentElement("afterend",parrafo4);//hermano siguiente
+
+		cont.insertAdjacentHTML("beforeend",
+		`<h2 class="titulo-color">
+			Hola que tal ${2+3}
+		</h2>`
+		)
+		cont.insertAdjacentText("afterbegin","Soy ultimo");
+		cont.replaceChild(parrafo5,parrafo2);
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 100vh;
+			background-color: #d1d1d1;
+		}
+		.cont{
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.cont input{
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="cont">
+		<input type="text" id="nombre" placeholder="Nombre">
+		<input type="text" id="apellido" placeholder="Apellido">
+		<input type="text" id="edad" placeholder="Edad">
+		<input type="text" id="sexo" placeholder="sexo">
+		<button id="click">Click</button>
+	</div>
+	<script>
+		let persona={};
+		document.getElementById("click").addEventListener("click",()=>{
+			let nom = document.getElementById("nombre").value;
+			let ape = document.getElementById("apellido").value;
+			let ed = document.getElementById("edad").value;
+			let sex = document.getElementById("sexo");
+			persona = {
+		 	nombre:nom,
+		 	apellido:ape,
+		 	edad:ed,
+		 	sexo:sex
+		 }
+			//recorreo el array y nos devuel atributo y valor en un array
+			//recorre un array devolviendo en un array sus atributos
+			//recorre un array devolbiendo en un array sus sus valores
+			//Object.entries, Object.keys, Object.values
+			// 
+		})
+	</script>
+</body>
+</html>

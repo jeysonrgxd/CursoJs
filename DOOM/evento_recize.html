@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+			height: 100vh;
+			/*display: flex;*/
+			margin: 0;
+			padding: 0;
+			/*flex-direction: column;*/
+		}
+		section{
+			resize: both;
+			max-width: 800px;
+			min-width: 400px;
+			/*width: 500px;*/
+			overflow: auto;
+		}
+		section:nth-child(1){
+			background-color: red;
+			height: 200px
+		}
+		section:nth-child(2){
+			background-color: green;
+			height: 200px
+			
+		}
+		section:nth-child(3){
+			background-color: blue;
+			height: 200px
+
+			
+		}
+	</style>
+</head>
+<body>
+	<section class="primero" data-color="red"></section>
+	<section class="segundo" data-color="green"></section>
+	<section class="tercero" data-color="blue"></section>
+
+	<script>
+		//evento resize es para el documento
+		window.addEventListener("resize",(e)=>{
+			console.log(innerWidth,innerHeight);
+			console.log(outerWidth,outerHeight);
+
+		})
+		let secciones = document.querySelectorAll("section");
+		secciones.forEach((element,x,array)=>{
+			element.addEventListener("click",(e)=>{
+				let color = element.dataset.color;
+				console.log( color);
+			})
+		})
+
+	</script>
+</body>
+</html>

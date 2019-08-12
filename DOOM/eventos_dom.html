@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			background-color: #d1d1d1;
+			min-height: 250vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		button{
+			background-image: linear-gradient(90deg,#7245CD,#4595CD);
+			color: #fff;
+			border:none;
+			font-size: 20px;
+			padding: 10px 20px;
+			outline: none;
+			/*opacity: 0;*/
+			/*transform: translateY(-789px);*/
+
+		}
+		.fixed{
+			position: fixed;
+			top: 0;
+
+		}
+		/*.efecto{
+			animation: aparecer 1s 1 linear;
+			animation-fill-mode: forwards;
+		}
+		@keyframes aparecer{
+			from{
+				opacity: 0
+			}
+			50%{
+				opacity: 1
+			} 
+			to{
+				opacity: 1
+			}
+		}*/
+	</style>
+	<script>
+		//muy diferente la evento del load ya que load ejecuta despues de cargarse toda la pagina asi falte cargar un video no se ejecutara el script asa que se aya crgado del todo, a cambio DOMContentLoaded carga el script despues de cargar los elementos del dom osea el html sin nesesidad de que se cargen imagenes servicios apis
+		window.addEventListener("DOMContentLoaded",()=>{
+			let boton =  document.getElementById("boton");
+			boton.addEventListener("click",(e)=>{
+				alert("hola como estas");
+			})
+
+			//ejercicio2 
+			//la propiedad pageYOffset pageXOffset devuelven los píxeles en los que se ha desplazado el documento actual desde la esquina superior izquierda de la ventana, horizontal y verticalmente. 
+			addEventListener("scroll",(e)=>{
+				console.log(e)
+				// if(e.path[1].pageYOffset>200){
+				// 	let boton =  document.getElementById("boton");
+				// 	boton.classList.add("efecto");
+
+				// }
+				// else{
+				// 	boton.classList.remove("efecto");
+
+				// }
+
+				//ejercicio3
+				//propiedad offsetTop con pageYOffset
+				if(window.pageYOffset>=boton.offsetTop){
+					boton.classList.add("fixed");
+					console.log("paso")
+
+				}
+				if(boton.offsetTop==0){
+					boton.classList.remove("fixed");
+				}
+				
+
+
+				//la propiedad offsetHeight devuelve el largo de cada elemento entoses para enterder esta funcion y como usarla seria <elemento>.offsetHeight
+				console.log(e.path[1].pageYOffset);
+			})
+
+
+			
+		})
+	</script>
+</head>
+<body>
+	<button id="boton">Saludar</button>
+
+
+</body>
+</html>

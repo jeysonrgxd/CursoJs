@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		.cont-boton{
+			text-align: center;
+			/*border: 1px solid red;*/
+		}
+		.cont-boton button{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="cont-boton" id=""cont-boton>
+		<button value="red">ROJO</button>
+		<button value="blue">AZUL</button>
+		<button value="green">VERDE</button>
+	</div>
+	
+	<script>
+		//usando for of----------para recorrer array de una fora mas rapida---------
+		let c = console.log;
+		let nombres = ["hola","como","estas","todo","bien"];
+		let alrevez= [];
+		for(let nombre of nombres ){
+			alrevez.unshift(nombre);
+		}	
+		c(alrevez);
+
+		// usando foreach------especialmente para asignar eventos a elementos de un array o objeto tres paramentos el elemento la posicion y el mismo array------------
+		let div = document.querySelectorAll(".cont-boton button");
+		div.forEach((element,x)=>{
+			let color = element.value;
+			element.addEventListener("click",(event)=>{
+				document.querySelector("body").style.backgroundColor =color; 
+			})
+		});
+// ejemplos 2 	
+		let letras  = ["a","b","c","d"];
+		letras.forEach((element,x,arr)=>{
+			c(element); //imprime el valor 
+			c(x); //imprime la pocicion del valor
+			c(arr);//imprime el array completo
+		})
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
+
+

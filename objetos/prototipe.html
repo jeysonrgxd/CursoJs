@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		let jeyson ={
+			nombre :"jeyson",
+		}
+		//agregamos una propiedad al objeto de esta forma
+		jeyson.edad=12;
+
+		// borrammos de esta forma una propiedad del objeto
+		delete jeyson.nombre;
+		console.log(jeyson);
+		//proptotipe
+
+		console.log(Object.getPrototypeOf(jeyson))
+		//Object.prototype.propierdad = ....
+	</script>
+</body>
+</html>

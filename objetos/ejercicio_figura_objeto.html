@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		.cont{
+			background-color: red;
+			width: 200px;
+			height: 200px;
+			bord
+		}
+	</style>
+</head>
+<body>
+	<script>
+		//las funciones de flechas son funciones anonimoas por lo tanto es no es recomendable utilizarlas para crear metodos para las clases devido que si heredamos con otra clase esta clase no podremos acceder por super al metodo ya que las funciones de flechas son anonimas, es mejor utilizar las funciones normales
+		class Figura{
+			constructor(width,height,color){
+				this.width=width
+				this.height=height
+				this.color =color
+				// this.radio = radio
+			}
+
+			dibujar(){
+				return document.body.innerHTML=document.body.innerHTML+`
+				<div 
+					style="
+					width:${this.width}px;
+					height:${this.height}px;
+					background:${this.color};"
+				>
+				</div>	
+				`
+			}
+		}
+
+		class circulo extends Figura{
+			constructor(width,height,color,radio=0){
+				super(width,height,color);
+				this.radio = radio;
+			}
+			dibujarcirculo(){
+				// return document.body.innerHTML=document.body.innerHTML+`
+				// <div 
+				// 	style="
+				// 	width:${this.width}px;
+				// 	height:${this.height}px;
+				// 	background:${this.color};
+				// 	border-radius:${this.radio}%"
+				// >
+				// </div>	
+				// `
+				super.dibujar()
+			}
+		}
+
+	</script>
+</body>
+</html>

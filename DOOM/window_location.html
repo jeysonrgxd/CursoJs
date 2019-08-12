@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body {
+         background-color: #d1d1d1;
+      }
+      h1{
+         text-align: center;
+      }
+   </style>
+</head>
+
+<body>
+      <h1>Propiedades de Objeto location</h1>
+   <h2 id="url">Url:</h2>
+   <p></p>
+   <br>
+   <h2 id="host">Host:</h2>
+   <p></p>
+   <br>
+   <h2 id="hostname">Hostname:</h2>
+   <p></p>
+   <br>
+   <h2 id="port">Puerto:</h2>
+   <p></p>
+   <br>
+   <h2 id="protocol">Protocol:</h2>
+   <p></p>
+   <br>
+   <h2 id="origin">Origin</h2>
+   <br>
+   <h2>Hash</h2>
+   <p></p>
+   <br>
+   <h2 id="pathname">Pathname</h2>
+   <p></p>
+
+   <script>
+      //creamos varieble consola de llamada para la abreviacion
+      let c= console.log;
+      //capturar nombres
+      let texturl = document.getElementById("url");
+      let texthost = document.getElementById("host");
+      let texthostname = document.getElementById("hostname")
+      let textport = document.getElementById("port")
+      let textprotocol= document.getElementById("protocol");
+      let textorigin = document.getElementById("origin");
+      let textpathname = document.getElementById("pathname"); 
+
+      let oblocation = window.location;
+
+      c(oblocation);
+      texturl.nextElementSibling.textContent=oblocation.href;
+      //tambien podemos cambiar la pagina actual y redirijirnos a eya
+      //oblocation.href="https://www.google.com.pe"
+
+      texthost.nextElementSibling.textContent ="no funciona en localhost"
+      c(oblocation.host);
+
+      texthostname.nextElementSibling.textContent="no funciona en local"
+      c(oblocation.hostname)
+
+      textport.nextElementSibling.textContent="no hay datos en local"
+      c(oblocation.port)
+
+      textprotocol.nextElementSibling.textContent=oblocation.protocol;
+      c(oblocation.protocol)
+
+      textorigin.nextElementSibling.textContent=window.location.origin;
+      c(window.location.origin);
+
+      //metodos de location
+
+      //este metodo recarga la pagina
+      //window.location.reload()
+
+      //este metodo assign("url") carga otra pagina
+      //window.location.assign("https://www.google.com.pe"); 
+
+      //este metodo window.replace("url") elimina la URL del documento actual del historial del documento, lo que significa que no es posible usar el botón "atrás" para volver al documento original.
+      //window.location.replace("url");
+
+
+   </script>
+</body>
+
+</html>

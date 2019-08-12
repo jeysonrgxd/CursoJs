@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		//funciones puras. aqui bemos que cambia el valor de la variable 1°
+		const c =console.log;
+		let a = "hola";
+		//ejercicio 1 demostramos que cambiamos el valor de la variable a alfinal de la funcion
+		// const saludo = (persona)=>{
+		// 	a=a+persona;
+		// 	return a;
+		// }
+		// c(saludo("jeyson"))
+		// c(a);
+
+		//aora lo solucionamos
+		// const saludo2 = (saludo, persona)=>saludo+" "+persona; primera fora de retorno
+		const saludo2 = (saludo, persona)=>`${saludo} ${persona}`;
+		c(saludo2(a,"jeyson"));
+		c(a);
+
+
+		//funciones auto nombradas 2°
+		const d = ((saludo,persona)=> `${s  aludo} ${persona}`)(a,"fernanda");
+		c(d);
+
+		// funciones anonimas 3°
+		setTimeout(()=>{
+			let edad = prompt("cual es tu edad");
+			c(edad);
+		},3000)
+
+		
+	</script>
+</body>
+</html>

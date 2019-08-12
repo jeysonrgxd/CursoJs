@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		.sinnada{
+			padding: 0;
+			margin: 0;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<h2 id="titulo">El titulo es: </h2>
+	<ul id="menu">
+		<li>DOCUMENT</li>
+		<li>OBJECT</li>
+		<li>MODEL</li>
+	</ul>
+
+	<script>
+		let c =  console.log;
+		let titulo =  document.getElementById("titulo");
+		let nombreTitu = document.createElement("p");
+		nombreTitu.textContent = "Creacion de elementos"
+		nombreTitu.id = "parrafo"
+		nombreTitu.classList.add("sinnada")
+		if(titulo){
+			titulo.appendChild(nombreTitu);			
+		}else{
+			c("error en la sintaxis")
+		}
+		
+	</script>
+</body>
+</html>

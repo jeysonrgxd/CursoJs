@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body{
+         background-color: #d1d1d1;
+      }
+   </style>
+</head>
+<body>
+   <template id="template">
+      <h2></h2>
+      <p></p>
+   </template>
+   <div id="contenedor"></div>
+
+   <script>
+      let c =  console.log;
+      let contenedor = document.getElementById("contenedor");
+      let template = document.getElementById("template");
+      let concopiatem = template.content.cloneNode(true);
+      
+     concopiatem.querySelector("h2").textContent="Soy el titulo del template";
+     concopiatem.querySelector("p").textContent=`Soy el parrafo del template asi que boy hacer 
+     lorem lorem upsun upsun lorem lorem upsun upsun`;
+
+     contenedor.appendChild(concopiatem);
+      
+    
+   
+   </script>
+</body>
+</html>

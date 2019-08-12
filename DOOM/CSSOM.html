@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body {
+         background-color: #D1d1d1;
+         width: 90vw;
+         border: 1px solid red;
+      }
+
+      .contenedor {
+         background-color: darkred;
+         width: 30px;
+         padding: 30px;
+         animation: mover 1s 1 linear;
+         transform: translateX(200px);
+      }
+      .span{
+         color: red;
+      }
+      /* @keyframes mover{
+         from{
+            transform: translateX(0)
+         } 
+         to{
+            transform: translateX(100px)
+
+         }
+      } */
+   </style>
+</head>
+
+<body>
+   <button id="boton">Propiedades</button>
+   <div class="contenedor">
+
+   </div>
+
+   <div class=""></div>
+   <script>
+      /*
+         para imprimir los "stylos" computados(calculados) mas no declarados (si pero ya cuando se proceso todo)
+         esto inclusive nos da las medidas calculadas de los elements tienen el cual le otorga por defeccto el navegador
+         getComputedStyle(element).propiedad
+      */
+      let boton  = document.getElementById("boton");
+      boton.addEventListener("click",(e)=>{
+         let cuadro = document.querySelector(".contenedor");
+         let cuadro_stylos = window.getComputedStyle(cuadro);
+         let cuadro_color = cuadro_stylos.backgroundColor;
+         let cuado_height = cuadro_stylos.height;
+         let cuadro_width = cuadro_stylos.width;
+         let cuadro_padding = cuadro_stylos.padding;
+         console.log(cuadro_stylos)
+
+         //opcion1
+         /*
+            // let datos = document.createElement("p");
+            // datos.innerHTML=`<p>El color de fondo es: <span class="span">${cuadro_color}</span><br>
+            //                  El height del cuadro es: <span class="span">${cuado_height}</span></p>`
+            // cuadro.insertAdjacentElement("afterend",datos);        
+         */
+         //opcion2
+         cuadro.insertAdjacentHTML("afterend", `<p>El color de fondo es: <span class="span">${cuadro_color}</span><br>
+                          El width del cuadro es: <span class="span">${cuadro_width}</span></p>`);
+
+
+      })
+
+      /*
+         mathmedia
+            validas mediaquerys css junto al rezise puedes crear grandes cosas i con su propiedad <matches> 
+            al cual podemos acceder mediante el objeto que devuelve window.matchMedia("mediaquery")
+      */ 
+      // const mediaquery = (e) => {
+      //    let valor = window.matchMedia("(max-width:800px)")
+      //    if (valor.matches) {
+      //       document.body.style.backgroundColor = "red";
+      //    } else {
+      //       document.body.style.backgroundColor = "yellow";
+      //    }
+      // }
+      // window.addEventListener("resize", mediaquery)
+      // window.addEventListener("DOMContentLoaded", mediaquery)
+      // cont.addEventListener("animationend",(e)=>{
+      //    e.target.style.backgroundColor="green"
+      // })
+
+
+      /*
+        <element>.getBoundingClientRect.
+         top,left,bottom,right,width,height,x,y
+         nos devuelve las medidas con respeto al borde del elemento respecto al viewport (sus cordenadas)
+      */
+      let contenedor = document.querySelector(".contenedor");
+      let cordenadas = contenedor.getBoundingClientRect();//nos devuelve un objeto rect
+      console.log(cordenadas);   
+
+
+   </script>
+</body>
+
+</html>

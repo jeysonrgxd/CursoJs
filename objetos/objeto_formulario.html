@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #d1d1d1;
+		}
+		h2{
+			text-align: center;
+		}
+		div form label{
+			display: block;
+			margin: 10px;
+			font-weight: bold;
+		}
+		div form{
+			text-align: center;
+		}
+	</style>
+
+
+</head>
+<body>
+	<h2>Formulario</h2>
+	<div>
+		<form action="" id="formulario">
+			<label for="">Nombre <input type="text" id="nombre"></label>
+			<label for="">Apellido <input type="text" id="apellido"></label>
+			<label for="">Edad <input type="text" id="edad"></label>
+			<label for="">DNI <input type="text" id="dni"></label>
+			<label for="">Usuario <input type="text" id="usuario"></label>
+			<label for="">password <input type="password" id="password"></label>
+			<label for=""><input type="submit"></label>
+		</form>
+	</div>
+	<div id="perro">
+		<p id="jeyson">Hola como estas</p>
+	</div>
+	<script>
+		//recordar que pueddes acceder alos input de un formuario de 2 maneras y sacar su valor con la propiedad value
+		//primera opcion es cuando atras de event.target y despues . el id que le emos dado al input siempre y cuendo estemos en el evento submit del formulario
+		//otra forma es capturaar el id del elemento formulario y despues atravez del punto y especificar el id del elemento tambien tenemos acceso al elemento que queramos que siempre que sea hijo del formulario
+		let formulario = document.getElementById("formulario");
+		formulario.addEventListener("submit",event=>{
+			event.preventDefault();
+			console.log(formulario.nombre.value);
+		})
+		let perro = document.getElementById("perro");
+		console.log(perro)
+	</script>
+</body>
+</html>
