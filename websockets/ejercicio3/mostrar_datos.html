@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body{
+         background-color: #d1d1d1;
+      }
+      table{
+         /* border: 1px solid gray; */
+         
+      }
+      tr,th,td{
+         border: 1px solid gray;
+         padding: 5px;
+         border-collapse: initial;
+      }
+   </style>
+</head>
+<body>
+   <h1>AJAX PRACTICA GET</h1>
+   <form action="#" id="formulario">
+      <select name="personaje" id="personaje" required>
+         <option value="0" disabled selected>--SELECCIONA--</option>
+      </select>
+      <button id="boton">Get Data</button>
+   </form>
+   <table id="tabla">
+      <thead>
+         <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Alignment</th>
+            <th>Gender</th>
+            <th>Hometown</th>
+            <th>Fighting_Skills</th>
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+   </table>
+   <script src="procesar_datos.js"></script>
+</body>
+</html>

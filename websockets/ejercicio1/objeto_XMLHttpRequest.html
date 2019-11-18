@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body{
+         background-color: #d1d1d1;
+      }
+      .tabla{
+         width: 525px;
+         height:148px;
+         margin:20px 0;
+         border: 1px dashed red;
+         padding: 10px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+      }
+      .loader{
+         width: 30px;
+         height: 30px;
+         border: 2px dashed darkblue;
+         /* border-left:  transparent; */
+         /* border-right:  transparent; */
+         border-radius: 50%;
+         animation: girar 1.5s infinite linear;
+         display: none;
+      }
+      @keyframes girar{
+         0%{
+            transform: rotate(0)
+         }
+         100%{
+            transform: rotate(360deg)
+         }
+      }
+   </style>
+</head>
+<body>
+   <h1>Objeto XMLHttpRequest</h1>
+   <form action="traer_tabla.php" method="GET">
+      <button>Cargar tabla sin ajax</button>
+   </form>
+   <br>
+   <button id="btnSend">Traer tabla con ajax</button>
+   <div id="cont-tabla" class="tabla">
+      <div class="loader"></div>
+   </div>
+
+   <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   div{
+      width: 500px;
+      height: 300px;
+      background-color: #d1d1d1;
+      color: black;
+
+   }
+   p{
+      margin: 7px 0;
+   }
+   p.rojo{
+      color: crimson;
+   }
+   p.verde{
+      color:limegreen;
+   }
+   </style>
+</head>
+<body>
+   <button id="conectar">Conectar</button>
+   <button id="cerrar">Cerrar Conexion</button>
+   <input type="text" id="nombre" placeholder="Nombre">
+   <input type="text" id="apellido" placeholder="Apellido">
+   <input type="text" id="edad" placeholder="Edad">
+   <button id="enviar">Enviar</button>
+   <br><br>
+   <div  id="mensaje" ></textarea>
+</body>
+<script>
+   let ws = null;
+   let mensaje = document.getElementById("mensaje");
+   let setText=(respuesta,obj=null)=>{
+      let resp= `<p>${respuesta}</p>`
+      if(obj !=null){
+         resp = (obj.type=="open") ? `<p class="verde">${respuesta}</p>` : `<p class="rojo">${respuesta}</p>`;
+         console.log(obj);
+      }
+      mensaje.insertAdjacentHTML("beforeend",resp);
+   }
+   let mesajeJson = (e)=>{
+      let respJson = JSON.parse(e.data);
+      let ms = `<p>Nombre: ${respJson.nombre}</p>
+               <p>Apellido: ${respJson.apellido}</p>
+               <p>Edad: ${respJson.edad}</p>`;
+      mensaje.insertAdjacentHTML("beforeend",ms);
+   }
+   conectar.addEventListener("click",()=>{
+      ws = new WebSocket("ws://demos.kaazing.com/echo");
+      //gestionador de eventos de websockets
+      ws.onopen = (e)=> setText("Conectado",e);
+      ws.onclose = (e)=>setText("Conexion cerrada",e)
+      ws.onerror = (e)=>setText(e);
+      ws.onmessage = (e)=> mesajeJson(e);
+      //otro metodo de llemar a las funciones
+      // ws.addEventListener("open",()=>{
+      //    setText("Coenectado");
+      // })
+
+   })
+   enviar.addEventListener("click",()=>{
+      let datos = {
+         nombre:nombre.value,
+         apellido:apellido.value,
+         edad:edad.value
+      }
+      ws.send(JSON.stringify(datos));
+   })
+   cerrar.addEventListener("click",()=>{
+      ws.close("la conexion se cerro lo siento");
+   })
+
+</script>
+</html>
