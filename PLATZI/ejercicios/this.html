@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ </head>
+ <style>
+  body{
+ background-color:#333;
+ color:white;
+ }
+ </style>
+ <body>
+    <h3>this se refiere a un objeto . ese objeto es el que actualmente esta ejecutando un pedazo de código</h3>
+    <script>
+      //  this se va rreferir a la instancia de esa clase cuando creamos un objeto de ella
+       console.log(this)
+
+       function persona (){
+          console.log(`el this es ${this}`)
+       }
+       persona()
+
+       function animal(){
+          "use strict"
+          console.log(`el this es ${this}`)
+       }
+       animal()
+
+       const alumno = {
+          
+          nombre : "jeyson",
+          habilidad : function(){
+            console.log(`la habilidad de ${this.nombre} es matematicas`)
+          },
+          hambito :function (){
+             console.log(this)
+          },
+          esel:this
+       }
+       alumno.habilidad()
+      //aca si me devuelve el objeto ya que se ejecuta una funcion que fue declarada en el ambito del objeto el cual creamos
+       alumno.hambito()
+
+      //  aca esta ejecutando la propiedad la cual al ser puesta en una funcion global ps su this es el objeto global que invoca dicha funcion
+       console.log(alumno.esel)
+
+       let jaimito = alumno.hambito()
+       jaimito
+    </script>
+ </body>
+ </html>
