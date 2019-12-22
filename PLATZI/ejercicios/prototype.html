@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+      body {
+         background-color: #333;
+         color: white;
+         font-family: sans-serif;
+      }
+
+      ul li {
+         margin: 15px 0;
+      }
+   </style>
+</head>
+
+<body>
+   <h3>Prototype</h3>
+   <p>
+      Este es uno de los temas más tedioso de JavaScript, se aleja totalmente a cómo se manejan las clases y objetos en
+      otros
+      lenguajes de programación. Las clases son como un plano, se crean y se llaman, si se quiere crear otra clase, se
+      hace y
+      luego se instancia, así funcionaría en otros lenguajes de programación, pero en JavaScript todo es un objeto.
+   </p>
+
+   <script>
+      console.log("-------------------Creacion objeto comun---------------------")
+   // objeto comun y corriente
+      // primer super heroe
+      const hero = {
+         name: "Thor"
+      }
+      hero.saludar = function(){
+         console.log(`hola a todo soy ${this.name}`)
+      }
+      hero.saludar()
+
+      // segundo super heroe
+      const bat ={
+         name:"Batman"
+      }
+      bat.saludar =function(){
+         console.log(`hola a todos soy ${this.name}`)
+      }
+      bat.saludar()
+   
+   // Más eficiente  Podemos crear una función que nos construya estos objetos que llamamos dos veces, así ahorrar tiempo y código
+      console.log("\n-------------------Creacion mas efeciente---------------------")
+
+      function Hero2(name){
+         const hero={
+            name:name,
+         }
+         hero.saludar =function(){
+            console.log(`Buen dia soy ${this.name}`)
+         }
+         return hero;
+      }
+
+      let thor = Hero2("Thor")
+      thor.saludar()
+
+      let hiroman = Hero2("Hiroman")
+      hiroman.saludar()
+
+      // Ahora simplemente podemos ahorrarnos el estar creando una función por cada heroe, pero resulta que dentro de la función está otra que se llama saludar(), esta sí se llama por cada héroe que instanciamos de la función Hero(). Podemos crear un objeto aparte que tenga todas las funciones y que la función Hero haga referencia a ese nuevo objeto.
+      console.log("\n-------------------Creacion aun mas efeciente---------------------")
+      console.log(".")
+      console.log(".")
+
+      // const HeroMethods = {
+      //    saludar:function(){ 
+      //       console.log(`Que tal soy ${this.name}`)
+      //    },
+      //    getNombre:function(){
+      //       console.log(this.name)
+      //    }
+      // };
+      // function Hero3(name) {
+      //    const hero = {
+      //       name: name,
+      //    };
+      //    hero.saludar = HeroMethods.saludar;
+      //    return hero;
+      // }
+
+      // const thor2 = Hero3("Thor")
+      // thor2.saludar()
+
+      // const hiroman2 = Hero3("Hiroman")
+      // hiroman2.saludar()
+
+      // Object.create Esta es una función que recibe un objeto (el cual obtendremos todos sus metodos y parametros) como parámetro y devuelve uno nuevo.
+      console.log("\n-------------------Object Create---------------------") 
+      console.log(".")
+      console.log(".")
+      // const HeroMethods = {
+      //    saludar: function () {
+      //       console.log(`Que tal soy ${this.name}`)
+      //    },
+      //    getNombre: function () {
+      //       console.log(this.name)
+      //    }
+      // };
+      // function Hero3(name) {
+      //    const hero = Object.create(HeroMethods)
+      //    hero.name=name
+      //    return hero;
+      // }
+
+      // const thor2 = Hero3("Thor")
+      // thor2.saludar()
+
+      // const hiroman2 = Hero3("Hiroman")
+      // hiroman2.saludar()
+
+      // Prototype(es el objeto que tienen todas las funciones y es donde podemos guardar todos los atributos o metodos para despues pasarlo como objeto a Object.create(objeto.proptotype)) :El mejor lugar para colocar nuestros métodos es dentro de la función Hero.Para esto pondremos nuestros métodos en el proto de heroe.Para lograr esto lo tenemos que hacer con prototype.
+      console.log("\n------------------Prototype----------------------")
+      console.log(".")
+      console.log(".")
+         // function Hero3(name) {
+         //    const hero = Object.create(Hero3.prototype)
+         //    hero.name = name
+         //    return hero;
+         // }
+         // Hero3.prototype.saludar = function(){
+         //    console.log(`Que tal soy prototypo ${this.name}`)
+
+         // }
+         // Hero3.prototype.getNombre = function(){
+         //    console.log(this.name)
+
+         // }
+         // const thor2 = Hero3("Thor2")
+         // thor2.saludar()
+
+         // const hiroman2 = Hero3("Hiroman2")
+         // hiroman2.saludar()
+
+         // New: Esta palabra es azúcar sintáctico, ya no tendremos que usar Object.create ni retornar la función Hero para que nuestro mensaje aparezca en consola.Al usar New automáticamente nuestra función Hero usa el prototype como this, ya no tendremos que llamar a Hero.prototype con Object.create para contar con la función saludar.Las partes que no necesitaremos las comentaré.
+      console.log("\n------------------new (azucar sintactica)----------------------")
+
+         function Hero3(name) {
+               // const hero = Object.create(Hero3.prototype) al usar new en la instancia de esta objeto el valor es el this (por ende ya no es nesesario el object.create ya que new lo creara y le asignara el prototype de en este caso de Hero3)
+               this.name = name
+               // return hero; ya no tenemos que devolver el objeto
+            }
+            Hero3.prototype.saludar = function () {
+               console.log(`Que tal soy el new ${this.name}`)
+
+            }
+            Hero3.prototype.getNombre = function () {
+               console.log(this.name)
+
+            }
+            const thor2 = new Hero3("Thor2")
+            thor2.saludar()
+
+            const hiroman2 = new Hero3("Hiroman2")
+            hiroman2.saludar()
+         
+   </script>
+</body>
+
+</html>

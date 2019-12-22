@@ -1,5 +1,6 @@
 # Titulo
    Archivo de expecificacion del curso
+   https://augdiaugus.gitbook.io/recoleccion-de-notas-publicas/escuela-de-javascript/curso-profesional-de-javascript
 
 ## Ambitos de variable 
   **Scope** es el tiempo de vida y uso de una variable.

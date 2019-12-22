@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   font-family: sans-serif;
+   }
+   ul li {
+      margin: 15px 0;
+   }
+   </style>
+</head>
+<body>
+   <h3>Call Apply Bind</h3>
+   <p>Estas funciones nos sirven para establecer el valor de this, es decir cambiar el contexto que se va usar cuando la
+   función sea llamada.</p>
+   <p>Las funciones call, apply y bind son parte del prototipo Function. Toda función usa este prototipo y por lo tanto tiene
+   estas tres funciones.</p>
+   <ul>
+      <li><strong>functionName.call()</strong>Ejecuta la función recibiendo como primer argumento el this y los siguientes son los argumentos que recibe la función
+      que llamó a call.<br></li>
+      <li><strong>functionName.apply().</strong>Ejecuta la función recibiendo como primer argumento el this y como segundo un arreglo con los argumentos que recibe la
+      función que llamó a apply<br></li>
+      <li><strong>functionName.bind().</strong>Recibe como primer y único argumento el this. No ejecuta la función, sólo regresa otra función con el nuevo this
+      integrado<br>
+      </li>
+   </ul>
+   <br>
+   <div>
+      <p><strong>Botones para probar el NodeListo con foreach y call</strong></p>
+      <button class="button">Jeyson</button>
+      <button class="button">Stiven</button>
+      <button class="button">Sonia</button>
+   </div>
+   <script>
+      console.log("--------------------------call--------------------------")
+      function saludar(){
+         console.log(`Hola ${this.name} ${this.apellido} como estas`)
+      }
+      
+      function correr(donde, metros){
+         console.log(`${this.name} corre la cantidad de ${metros} metros en ${donde}`)
+      }
+      // Call - c de comas por parametros
+      let jeyson = {
+         name:"jeyson",
+         apellido:"ramos garcia",
+         edad: 25
+      }
+
+
+      saludar.call(jeyson)
+      correr.call(jeyson,"comas",1000)
+
+      // apply - a de array de parametros que le pasamos despues claro de nuestro this
+      console.log("\n\n--------------------------apply--------------------------")
+
+      let steven = {
+         name :"steven",
+         apellido:"gevara garcia",
+         edad:11
+      }
+
+      saludar.apply(steven)
+      correr.apply(steven,["comas",300])
+
+      // bind - No ejecuta la función, sólo regresa otra función con el nuevo this integrado
+      console.log("\n\n--------------------------bind--------------------------")
+      
+      let sonia={
+         name:"sonia",
+         apellido:"garcia quijano",
+         edad:43
+      }
+
+      let saludarSonia = saludar.bind(sonia)
+      saludarSonia()
+      let correSonia1 = correr.bind(sonia,"comas",300)
+      correSonia1()
+      // metodo curin : se puede pasar algunos parametro en la asignacion y despues en el llamada
+      let correSonia2= correr.bind(sonia,"comas")
+      correSonia2(300)
+
+      // ejercicio con los HTMLCollection al no poder hacer foreach utilizaremos el la funcion foreach del objeto Array y con call asignaremos su contexto en cual el foreach sera ejecutado en este caso sera el node list y la vez le asignaremos su parametro que es una funcion
+      console.log("\n\n--------------------------Resolviendo el problema del node list al foreach--------------------------")
+      let buttons =  document.getElementsByTagName("button")
+      let buttonsaction = document.getElementsByClassName("button")
+      
+      console.log(buttons)
+      console.log(buttonsaction)
+
+      // primera solocion clasica con Ecmascript6 Array.from([])
+      Array.from(buttons).forEach(button => {
+         console.log(button.textContent)
+      });
+
+      // segunda solucion "call" la usaremos para activar el evento foreach
+      Array.prototype.forEach.call(buttonsaction,button=>{
+         button.addEventListener("click",(ev)=>{
+            alert("hola "+ ev.target.textContent +" como estas")
+         })
+      });
+
+      // y la utlima solucion moder con spreedOperator rrecordar siempre el punto y coma antes de usarlo es medio rraro des investigar
+      
+      [...buttons].forEach(button=>{
+         console.log("hola",button.textContent,"con spreed operator")
+      })
+
+   </script>
+</body>
+</html>
