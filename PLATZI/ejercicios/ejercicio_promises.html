@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   </style>
+</head>
+<body>
+   <script>
+      function resolvAfterofSecond(valor, time =2000){
+         return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+               resolve(valor);
+            },time)
+         })
+      }     
+
+      // TENER PRESENTE QUE TODA FUNCION AL CUAL LE PONEMOS UN ASYNC SIEMPRE SIEMPRE POR MAS QUE VEAMOS QUE RETORNAMOS VARIABLES O ARRAY O OBJETOS PS SIEMPRE LA FUNCION ASYNC DEVUELVE UNA PROMESA CUYO VALOR TIENE QUE SER RESUELTA CON UN .then 
+
+      async function add1(x){
+         // recordar que b se obtendra despues de resolver la primera promesa osea despues de tener el valor de a, se procede a resolver la promesa que devolvera el valor de b
+         const a = await resolvAfterofSecond(20)
+         const b = await resolvAfterofSecond(30)
+
+         return x+a+b;
+      }
+
+      // usando promise.all para poder ejecutar promesas en paralelo
+      async function add2(x){
+
+         // estamos definiendo las promesas sin utilizar await (sin resolverla todavia) esto hace que a_p y b_p se crean sin tener que esperar al otro que sea resuelta para poder crear la siguiente
+         const a_p = resolvAfterofSecond(20)
+         const b_p = resolvAfterofSecond(30)
+
+         // primera forma de iniciar el paralelismo de promesas resolviendo las dos promesas en una linea de respuesta
+         // opcion1
+         // let resp = await a_p + await b_p;
+         // console.log(x+resp);
+
+         //Promise.all ejeuta las promesas en paralelo y nos devuelve un array con las respuestas ya resueltas pero siempre que utilizemos await antes solo asi no devolvera el array con los valores ya resueltos
+         const arrpro = await Promise.all([a_p, b_p]) 
+         return arrpro
+      }
+      // Promise.race nos devuelve la primera promesa que se resuelve cabe destacar que tambien jecuta las promesas en paralelo que le pasemos en un array y luego este devuelve una promesa el cual la resolvemos con un await ya que esta dentro de una funcion async 
+      async function add3(x){
+         const a_p2 = resolvAfterofSecond(20,2000)
+         const b_p2 = resolvAfterofSecond(30,1000)
+         const resp2 = await Promise.race([a_p2,b_p2]);
+         return resp2;
+      }
+
+
+      // imprimimos en consola el valor que nos devuelve la funcion async resuelta "podemos usar then por recordar toda funcion async devuelve una promesa asi te paresca que no se retorna la promesa sino una variable o algun otra cosas, siempre retorna una promesa"
+      add1(10).then(resp =>{
+         console.log(resp, "Ejecutando funcion add1")
+      })
+      add2(10).then(resp =>{
+         console.log(resp, "Ejecutando funcion add2")
+      })
+      add3(10).then(resp =>{
+         console.log(resp, "Ejecutando funcion add3")
+      })
+
+   </script>
+</body>
+</html>

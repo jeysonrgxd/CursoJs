@@ -100,7 +100,8 @@
       console.log("\n-------------------Object Create---------------------") 
       console.log(".")
       console.log(".")
-      // const HeroMethods = {
+
+      // let HeroMethods = {
       //    saludar: function () {
       //       console.log(`Que tal soy ${this.name}`)
       //    },
@@ -124,9 +125,10 @@
       console.log("\n------------------Prototype----------------------")
       console.log(".")
       console.log(".")
-         // function Hero3(name) {
-         //    const hero = Object.create(Hero3.prototype)
-         //    hero.name = name
+
+         // function Hero3(name){
+         //    const hero = Object.create(Hero3.prototype);
+         //    hero.name = name;
          //    return hero;
          // }
          // Hero3.prototype.saludar = function(){
@@ -148,7 +150,10 @@
 
          function Hero3(name) {
                // const hero = Object.create(Hero3.prototype) al usar new en la instancia de esta objeto el valor es el this (por ende ya no es nesesario el object.create ya que new lo creara y le asignara el prototype de en este caso de Hero3)
+
+               // pero si tenemos que declarar los atributos de esta clase con this.
                this.name = name
+               
                // return hero; ya no tenemos que devolver el objeto
             }
             Hero3.prototype.saludar = function () {

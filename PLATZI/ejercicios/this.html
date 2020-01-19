@@ -47,8 +47,30 @@
       //  aca esta ejecutando la propiedad la cual al ser puesta en una funcion global ps su this es el objeto global que invoca dicha funcion
        console.log(alumno.esel)
 
-       let jaimito = alumno.hambito()
-       jaimito
+      //  al pasar la funcion de alumno como referencia y luego al ejecutarlo ps el this es el objeto global
+       let jaimito = alumno.hambito
+       jaimito()
+
+      //  pero si le asignamos alumno.hambito() ejecutado nostrae el objeto this el cual es alumno
+      let jaimito2 = alumno.hambito();
+      jaimito2
+
+      // objeto por referencia aca el this es la referencia del objeto no el objeto en si
+      function garcia(name,apellido){
+         this.name = name
+         this.apellido = apellido
+      }
+      garcia.prototype.getName= function(){
+         console.log(`el nombre del pariente garcia es ${this.name}`)
+      }
+      garcia.prototype.getApellido = function(){
+         console.log(`el apellido del pariente garcia es ${this.apellido}`)
+      }
+      let jeyson = new garcia("jeyson", "ramos garcia")
+
+      jeyson.getName();
+      jeyson.getApellido();
+
     </script>
  </body>
  </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   form{
+      font-family: Verdana;
+   }
+   button{
+      padding:5px;
+      font-size: 15px;
+      cursor: pointer;
+   }
+   </style>
+</head>
+<body>
+   <h1>Que super Hero eres?</h1>
+   <form action="">
+         Nombre: <input type="text" id="heroname" required><br><br>
+      <div class="poderes">
+         <input type="radio" value="Volar"> Volar <br>
+         <input type="radio" value="Rayos lazer"> Rayos lazer <br>
+         <input type="radio" value="Super fuerza"> Super fuerza <br>
+      </div><br>
+      <button class="btn-mostrar">Crear</button>
+   </form>
+   <br>
+   <textarea name="" id="" cols="30" rows="10">
+
+   </textarea>
+   <script>
+     function Hero(name,poderes){
+      this._name=name
+      this._poderes = poderes
+     }
+      Hero.prototype.getNombre = function(){
+         console.log(this._name)
+      }
+      Hero.prototype.getPoderes = function(){
+         this._poderes.forEach(element => {
+            console.log(element.value)
+         });
+      }
+      function heremenor (name,poderes){
+         this._name=name
+         this._poderes = poderes
+      }
+      heremenor.prototype = Hero.prototype
+      // class heremenor extends Hero{
+      //    constructor(name,poderes){
+      //       super(name,poderes);
+      //    }
+      // }
+      
+      let myhero =""
+      let btm_init_hero = document.querySelector(".btn-mostrar");
+       btm_init_hero.addEventListener("click",(e)=>{
+          e.preventDefault()
+          console.log("Super hero creado")
+          let nombrehero = heroname.value
+          let poderes = document.querySelectorAll("input[type='radio']")
+          myhero = new heremenor(nombrehero,poderes)
+       })
+
+   </script>
+</body>
+</html>

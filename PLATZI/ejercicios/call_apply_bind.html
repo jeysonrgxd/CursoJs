@@ -47,6 +47,15 @@
       function correr(donde, metros){
          console.log(`${this.name} corre la cantidad de ${metros} metros en ${donde}`)
       }
+
+      function sumarEdad(num){
+         let resp = this.edad + num
+         console.log(`Mi edad es de ${this.edad} pero sumando ${num} es de ${resp}`)
+      }
+
+      function elThises(){
+         console.log(this)
+      }
       // Call - c de comas por parametros
       let jeyson = {
          name:"jeyson",
@@ -54,9 +63,11 @@
          edad: 25
       }
 
-
+      //usamos el metodod call que toda funcion tiene asignado en su proto, el cual nos sirve para cambiar el contexto de la funcion al ser ejecutado
       saludar.call(jeyson)
       correr.call(jeyson,"comas",1000)
+      elThises.call(jeyson)
+      sumarEdad.call(jeyson,10)
 
       // apply - a de array de parametros que le pasamos despues claro de nuestro this
       console.log("\n\n--------------------------apply--------------------------")
@@ -66,9 +77,11 @@
          apellido:"gevara garcia",
          edad:11
       }
-
+      //usamos el metodod apply que toda funcion tiene asignado en su proto, el cual nos sirve para cambiar el contexto de la funcion al ser ejecutado
       saludar.apply(steven)
       correr.apply(steven,["comas",300])
+      elThises.apply(steven)
+      sumarEdad.apply(steven,[10])
 
       // bind - No ejecuta la función, sólo regresa otra función con el nuevo this integrado
       console.log("\n\n--------------------------bind--------------------------")
