@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<style>
+ body{
+background-color:#333;
+color:white;
+}
+</style>
+<body>
+   <h1>
+      Generators
+   </h1>
+   <p>
+      Los generadores son funciones especiales, pueden pausar su ejecución y luego volver al punto donde se quedaron
+      recordando su scope.
+   </p>
+   <p>Algunas de sus características:</p>
+   <ul>
+      <li>Los generadores regresan una función.</li>
+      <li>Empiezan suspendidos y se tiene que llamar next para que ejecuten.</li>
+      <li>Regresan un value y un boolean done que define si ya terminaron.</li>
+      <li>yield es la instrucción que regresa un valor cada vez que llamamos a next y detiene la ejecución del generador.</li>
+   </ul>
+   
+   <script>
+      // funcion generadora simple sin yield
+      function* numero(){
+         console.log(1)
+      }
+      const num = numero();
+      console.log(num)
+      console.log("ejecuta num.next()")
+      //num.next() nos devuelve {value: undefined, done: true} y tambien ejecuta la funcion por ende bota 1 probar en el navegador
+
+      // funcion generadora con yield el cual esta palabra "keyword" detiene el proceso al hacer un obj.next() lo detiene y ejecuta antes del yield, si asemos de nuevo el obj.next() pasa ala siguiente y ala siguiente tambien acepta un valor en el cual aparecera en la consola el cual es un atributo de un objeto que retorna esta funcion decoradora aremos un ejemplo
+      function* nombres(){
+         console.log("jeyson")
+         yield "1°";
+         console.log("steven")
+         yield "2°";
+         console.log("sonia")
+         yield "3°";
+         console.log("javier")
+      }
+      const nom = nombres();
+      console.log("ejecuta en la consola nom.next() varias veses para que veas en accsion la funcion generadora con yield")
+
+      // ejemplo 3 suma de un numero con while infinito
+      function* num_incre(){
+         let num = 1;
+         while(true){
+            console.log(num)
+            let reset = yield num;
+            if(reset){
+               num = 1
+            }else{
+               num++;
+            }
+         }
+      }
+
+      const num_aumenta = num_incre();
+      console.log("ejecuta en la consola num_aumenta.next() varias veses para que puedas ver la funcion de while con el generator")
+
+      // ejercicio de fibones hacer despues
+   
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   </style>
+</head>
+<body>
+   <h2>Getters y setters</h2>
+   <p>
+      Son funciones que se usan dentro de objetos para tener propiedades virtuales, podemos establecer valores que no
+      existían en las funciones.
+   </p>
+
+   <h2>Getter</h2>
+   <p>
+      Enlaza la propiedad de un objeto con una función que será llamada cuando la propiedad es buscada.<br>
+      A veces es deseable permitir acceso a una propiedad que retorna un valor dinámicamente calculado, o si desea
+      mostrar el estado de alguna variable interna sin requerir el uso de llamadas a métodos explícitos. En JavaScript,
+      esto se puede lograr con el uso de un getter (captador). No es posible tener simultáneamente un getter ligado a
+      una propiedad y que dicha propiedad tenga actualmente un valor, aunque es posible usar un getter junto con un
+      setter para crear un tipo de pseudo-propiedad.
+   </p>
+
+   <h2>Setter</h2>
+   <p>
+      La sintaxis set enlaza la propiedad de un objeto con una función que será llamada cada vez que se le asigne un
+      valor.<br>
+      En JavaScript, un setter puede ser usado para ejecutar una función para una propiedad especifica que será
+      ejecutada al cambiar el valor. Los setters se suelen usar con getters para crear un tipo de pseudo-propiedad. No
+      es posible tener un setter para una propiedad que tiene un valor real
+      
+   </p>
+   <script>
+      let persona = {
+         name : "jeyson",
+         apellido: "ramos",
+         edad :23,
+         get showName(){
+            return `Tu nombre completo es ${this.name} ${this.apellido}`
+         },
+         // probamos un forma con array inventado asosiativo xD.!
+         set showName(arr){
+            this.name = arr["nombre"]
+            this.apellido = arr["apellido"]
+         }
+      }
+
+      console.log("--------------Imprimimos los valores con un mensaje atravez del getter ");
+      console.log(persona.showName)
+
+      console.log("--------------Cambiamos los valores atravez del setter");
+      let valores = []
+      valores["nombre"] = "kevin"
+      valores["apellido"] = "chipana"
+      persona.showName = valores
+      console.log(persona.showName);
+
+   
+   </script>
+</body>
+</html>

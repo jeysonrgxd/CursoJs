@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <style>
+    body{
+   background-color:#333;
+   color:white;
+   }
+   </style>
+</head>
+<body>
+   <h2>Ejercicio dos proxi usando setter</h2>
+   <script>
+      let empleado = {
+         nombre:"jeyson",
+         apellido:"ramos garcia",
+         edad :23,
+         password : "3##4$$5%%"
+      }  
+      let handler = {
+         set(obj, prop, value){
+            // cuando queremos agregar otro atributo a nuestro objeto y no se lo permitimos ya que podria hacer un fallo al sistema si es hacker xD
+            if(!(prop in obj)){
+               console.error("No puedes agregar otro atributo al objeto");
+               return false;
+            }
+            // cuando le agregamos una propiedad que si exite en el objeto pero no tiene que tener caracteres de numeros
+            // esta expresion regular /\d/ es si hay numero y luego utilizamos el test para ver si contiene numero nuestro string
+            else if ((prop === "nombre" || prop === "nombre") && /\d/.test(value)){
+               console.error(`No puedes asignar caracteres de numero a la propiedad ${prop}`)
+               return false
+            }
+            else{
+               // siemrpe alfinal debolvemos lo que hacemos encaso no se cumpla lo que escribimos
+               obj[prop] = value
+            }
+         },
+
+         get(){
+            // esto es si quieren acceder ala varible password
+         }
+      }
+      // usando proxi para evitar agregar mas propiedades anuestro ejemplo simple
+      let pEmpleado = new Proxy(empleado, handler)
+      
+      console.log(pEmpleado)
+
+
+   
+   </script>
+</body>
+</html>

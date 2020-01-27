@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src = "./levenshtein.js"></script>
+   <title>Document</title>
+</head>
+<style>
+ body{
+background-color:#333;
+color:white;
+}
+</style>
+<body>
+   <h1>Proxy</h1>
+   <p>
+      un proxy no es ni más ni menos que un intermediario entre un programa y el objeto al cual queremos invocar un
+      método o cambiar una propiedad.
+   </p>
+
+   <script>
+      let colores = {
+         red :"rojo",
+         green : "verde",
+         blue: "azul",
+      }
+
+      //handler Un objeto cuyas propiedades son funciones que definen el comportamiento del proxy cuando una operaciónes realizada en él. as conocido como las "trampas" que se activa al ser llamado una propiedad de un objeto antes de que llege al original pasa por este intermediario y hacemos que valide o lago que queramos y lo lanzamos 
+      
+      let handler= {
+         // este objeto puede tener varias funciones(son tranmpas) en este caso trabajaremos 
+         //con get para inspeccionar cuando se este tratando de leer un valor. recive dos parametros. 1er el objeto y
+         //la propiedad que se esta tratando de leer.
+         //ver : https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Proxy
+         
+         get(obj, prop){
+            if (prop in obj) {
+               return obj[prop]
+            }
+            const sugerir = Object.keys(obj).find((el)=>{
+               return Levenshtein.get(el,prop) <= 3 
+            })
+            console.log(`No se encontro la propiedad talvez quisistes decir ${sugerir}`)
+            return obj[prop];
+         }
+      }
+
+      //ejemplo para intersectar las llamadas si una propiedad que esta buscando el usuario no existe bamos haber que existen para sugerir una . este objeto Proxy recive dos objetos el primero es el objeto al cual bamos a interceptar ("es decir antes de que una llamada llegue a un objeto lo que remos interceptar ") y el otro es el 
+      const p = new Proxy(colores, handler); 
+      console.log(p.reed)
+
+   </script>
+</body>
+</html>
