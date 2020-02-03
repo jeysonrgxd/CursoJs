@@ -1,8 +1,9 @@
 // ejecucion
 
 import Mediaplayer from './mediaplayer.js'
-import Autoplay from './plugins/Autoplay.js'
-import Autopause from './plugins/Autopause.js'
+import Autoplay from "./plugins/Autoplay.1";
+// import Autopause from './plugins/Autopause.js'
+import Autopause from './plugins/Autopause.ts'
 // ejecucion del programa
 let video = document.querySelector("video");
 let btnplay = document.getElementById("playButton");
@@ -22,12 +23,13 @@ console.log(objvideo.nombre)
 // - los servicesworker se instalan 
 
 if('serviceWorker' in navigator){
-   // este registro de un service worker devuelve una promesa por ende podemo utilizar el then o catch para analizar lo que nos trae
-   navigator.serviceWorker.register('/sw.js')
-   .then(resp => {
-      console.log(resp) 
-   })
-   .catch(error => {
-      console.log(error.message);
-   })
+   // este registro de un service worker devuelve una promesa por ende podemo utilizar el then o catch para analizar lo que nos trae. lo comentamos por que estamos utilizando typscript con parcel
+
+   // navigator.serviceWorker.register('/sw.js')
+   // .then(resp => {
+   //    console.log(resp) 
+   // })
+   // .catch(error => {
+   //    console.log(error.message);
+   // })
 }

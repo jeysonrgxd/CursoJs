@@ -29,14 +29,14 @@ async function precache(){
    const cache = await caches.open(VERSION)
    // ahora añadimos recursos
    return cache.addAll([
-      '/',
-      './index.html',
-      './main.js',
-      './mediaplayer.js',
-      './plugins/Autopause.js',
-      './plugins/Autoplay.js',
-      './index.css',
-      './assets/video-prueba.mp4'
+      // '/',
+      // './index.html',
+      // './main.js',
+      // './mediaplayer.js',
+      // './plugins/Autopause.js',
+      // './plugins/Autoplay.js',
+      // './index.css',
+      // './assets/video-prueba.mp4'
    ])
 }
 
