@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<style>
+ body{
+background-color:#333;
+color:white;
+}
+.contenedor{
+   display: grid;
+   grid-gap: 10px;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: auto auto;
+
+}
+.contenedor div{
+   padding: 10px;
+}
+.cancel{
+   color:red;
+   font-size: 18px
+}
+</style>
+<body>
+   <div class="contenedor">
+      <div>
+         <h2>Como cancelar peticiones Fetch</h2>
+         <p>La peticiones AJAX permitieron en su tiempo hacer peticiones asíncronas al servidor sin tener que detener la carga de la
+         página. Hoy en día se utiliza la función fetch para esto.</p>
+         <p>Con fetch tenemos algo llamado AbortController que nos permite enviar una señal a una petición en plena ejecución para
+         detenerla.</p>
+         <p>AbortController nos va ha dar 2 controllers para poder detener una ejecución en este caso va ha ser la del fetch, la
+         cual es una clase que trae el motor de javascript, la cual tenemos que instanciarla.</p>
+      </div>
+      <div>
+         <a href="../">GO BACK</a>
+         <p><em>Abre la consola</em></p>
+         <img src="" id="huge-img" height="400" alt="">
+         <button id="load">Load HUGE Image</button>
+         <button id="stop" disabled>Stop Fetching</button>
+         <br>
+         <p class="cancel" id ="cancelado"></p>
+      </div>
+   </div>
+   
+   
+   <script>
+      const url1 = "https://vignette.wikia.nocookie.net/dragon-ball-teorias/images/c/c5/Goku_SSJ3_Trans_%281%29.png/revision/latest?cb=20131203203256&path-prefix=es"
+      const img = document.getElementById("huge-img");
+      const loadButton = document.getElementById("load")
+      const stopButton = document.getElementById("stop")
+      const cancelado = document.getElementById("cancelado")
+      //declaraos variable antes para despues tener acceso a ella  
+      //en el boton cancelar peticion fetch y tambien en evento de loadButton
+      let controller
+
+      // funcion que habilita o deshabilita un boton
+
+      function starLoading(){
+         loadButton.disabled = true
+         loadButton.textContent = "Loading..."
+         stopButton.disabled = false
+      }
+      function stopLoading(){
+         loadButton.disabled = false
+         loadButton.textContent = "Load HUGE Image"
+         stopButton.disabled = true
+
+      }
+      // le asignamos un funcion asyncrona al boton loadButton
+      loadButton.onclick = async function(){
+         // ejecutamos startLoading par cambiar la apariencia de boton
+         starLoading();
+
+         // inicializamos el AbortController para pasarselo al fetch
+         controller = new AbortController()
+
+         // asemos un trycatch para manejar el error que se ejecuta cuando detenermos una peticion fetch
+         try {
+            // hacemos la petición asincrona a la URL usando async await
+            // y le añadiremos un objeto de configuracion al fetch
+            // este objeto de configuracion le pasaremos un objeto que se llama la señal
+            // la señal vendra del abortcontroller
+            const response = await fetch(url1,{signal:controller.signal})
+            
+            // utilizamos el metodo .blob() para obtener el binario de la imagen
+            const blob = await response.blob()
+            console.log(blob);
+            
+            //convertimos el blob binario a una URL, el navegador se encarga de asignar el blob un url 
+            const imgURL = URL.createObjectURL(blob);
+
+            img.src = imgURL
+         } catch (error) {
+            // manejamos el error si cancelamos la peticion
+            console.log(error);
+         }
+         stopLoading();
+
+      }
+
+      stopButton.onclick = function(){
+         // si deseamos detener tenemos que llamar al abort controller
+         // el abort envia una señal al fetch y ahce que la peticion se cancele
+         controller.abort();
+         cancelado.textContent = "la peticion fue cancelada. Abrir la consola"
+         stopLoading();
+      }
+   
+   </script>
+</body>
+</html>

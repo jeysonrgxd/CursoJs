@@ -15,7 +15,7 @@ function Mediaplayer(config) {
 Mediaplayer.prototype._initPlugin = function(){
    const player = {
      play:  () => this.play(),
-     pause: () => this.play(),
+     pause: () => this.pause(),
      media: this.media,
       // getter y setter son propiedades virtuales que no existen directamente pero atravez de eyos podemos correr una funcion que va calcular estos valores o va usar un valor para establecer este nuevo valor
 
