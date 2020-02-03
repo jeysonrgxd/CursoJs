@@ -9,8 +9,7 @@
    - Function Scope: va dentro de una función. Var, puede sobre escribirse en esa función, hay que    tener cuidado con esta.
    - Block Scope: Let y const, te ayudan a que solo sea útil en un bloque especifico.
    - Module Scope: Modulares se limita a su archivo y no sale de ahí.
- **Recuerda:**
- * En la consola puedes leer las variables locales con la palabra `window.nombre-de-la-variable`
+   - **Recuerda:** En la consola puedes leer las variables locales con la palabra `window.nombre-de-la-variable`
 
 ## TypeScript
 
