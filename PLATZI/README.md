@@ -16,9 +16,6 @@
 
 recordar que en el package.json en 
 
-"scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html"
-  }
+` "scripts": {"test": "echo \"Error: no test specified\" && exit 1", "start": "parcel index.html"} `
 
 devemos cambiar el valor del start: "parcel typescript/*.html" para probar las bases del lenguaje y para correr el proyecto de video cambiar a start: "parcel index.html", rrecordar tambien que si queremos correr la carpeta de  temas_avanzado con las clases de js tenemos que ver toquetear el start: "parce ....." o sino no utilizarlo ya que hay ciertos errores
