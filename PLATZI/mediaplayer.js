@@ -2,13 +2,16 @@
 // creamos una objeto usando el metodos la funcion constructora
 // esta manera esta embebido en la clase y no lo hace reutilizable para hacerlo reutilizable debemos mejorarlo
 class Mediaplayer {
+   
    constructor(config) {
       this.media = config.el;
       this.plugin = config.plugin || [];
+      this.container
       //podemos iniciar las funciones cuando este sea instanciado yamandolas en este constructor de la siguientes manera. sino inicializamos comentamos
       // this._initPlugin();
       // this.unmuted()
       // this.play()
+      this._initPlayer()
    }
    // codigo para el plugin
    _initPlugin() {
@@ -16,6 +19,7 @@ class Mediaplayer {
          play: () => this.play(),
          pause: () => this.pause(),
          media: this.media,
+         container:this.container,
          // getter y setter son propiedades virtuales que no existen directamente pero atravez de eyos podemos correr una funcion que va calcular estos valores o va usar un valor para establecer este nuevo valor
          get muted() {
             //   aca me devuelve el estado del video con su propiedad original muted si esta en muteado o no true o false
@@ -34,6 +38,14 @@ class Mediaplayer {
       this.plugin.forEach(plugin => {
          plugin.run(player);
       });
+   }
+
+   _initPlayer(){
+      this.container = document.createElement("div")
+      this.container.style.position = "relative"
+      this.media.parentElement.insertBefore(this.container, this.media)
+      this.container.appendChild(this.media)
+
    }
    // Mediaplayer.prototype.play = ()=> video.play();
    play() {
